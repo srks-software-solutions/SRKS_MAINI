@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3585005fa1c45bcab9ed633b22f880d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="unitworksccsModel.alarm_history_master" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.configuration_tblpmchecklist" Width="1.5" PointX="5.25" PointY="123.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.configuration_tblpmcheckpoint" Width="1.5" PointX="8.25" PointY="123.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Width="1.5" PointX="5.25" PointY="117.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.configuration_tblsensorgroup" Width="1.5" PointX="19.5" PointY="135.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.configurationtblmachinesensor" Width="1.5" PointX="21.75" PointY="123.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.configurationtblsensordatalink" Width="1.5" PointX="21" PointY="93.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.configurationtblsensormaster" Width="1.5" PointX="24.75" PointY="105.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.frommail" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.handle_no_ping" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.jobcard_details" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.mailmaster" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.message_code_master" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.message_history_master" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.monthdata" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.operationlog" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.parameter" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.parameters_master" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.pcb_details" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.pcb_parameters" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.pcbdaq" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.pcbdaqin_tbl" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.pcbdps_master" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.program_master" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.sharathtable" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.smtpdetail" Width="1.5" PointX="2.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_autoreport_log" Width="1.5" PointX="7.5" PointY="135.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_autoreportbasedon" Width="1.5" PointX="3" PointY="126.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_autoreportsetting" Width="1.5" PointX="5.25" PointY="129" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_autoreporttime" Width="1.5" PointX="3" PointY="130.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_axisdet" Width="1.5" PointX="18.75" PointY="94.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_axisdetails1" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_axisdetails2" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_CycleTimeAnalysis" Width="1.5" PointX="18.75" PointY="98.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_deletedProgDet" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_genericfilepath" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_livecbmparameters" Width="1.5" PointX="6.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_OEEDetails" Width="1.5" PointX="18.75" PointY="104.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_oeereportasdivision" Width="1.5" PointX="8.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_ProdAndonDisp" Width="1.5" PointX="21" PointY="165.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_ProdManMachine" Width="1.5" PointX="24" PointY="167" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_ProdOrderLosses" Width="1.5" PointX="18.75" PointY="118.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_reportmaster" Width="1.5" PointX="3" PointY="133.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_SaveNCProgVer" Width="1.5" PointX="10.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_servodetails" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_UtilReport" Width="1.5" PointX="18.75" PointY="121.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblactivitylog" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblAndonDispDet" Width="1.5" PointX="8.25" PointY="119" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblAndonImageTextScheduledDisplay" Width="1.5" PointX="8.25" PointY="129.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblapp_paths" Width="1.5" PointX="18.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblatccounter" Width="1.5" PointX="18.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblbottelneck" Width="1.5" PointX="11.25" PointY="123.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblbreakdown" Width="1.5" PointX="22.5" PointY="111" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblcell" Width="1.5" PointX="11.25" PointY="115.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblcellpart" Width="1.5" PointX="13.5" PointY="117.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblcustomer" Width="1.5" PointX="18.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbldailyprodstatu" Width="1.5" PointX="18.75" PointY="126.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbldaytiming" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbldowntimecategory" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbldowntimedetail" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblemailescalation" Width="1.5" PointX="13.5" PointY="122.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblendcode" Width="1.5" PointX="14.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblescalationlog" Width="1.5" PointX="18.75" PointY="109.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblgenericworkcode" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblgenericworkentry" Width="1.5" PointX="8" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblhistpm" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblholdcode" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblHolidayManagment" Width="1.5" PointX="2.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblholiday" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblHolidayTypeMaster" Width="1.5" PointX="20.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbllivedailyprodstatu" Width="1.5" PointX="18.75" PointY="130.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbllivemode" Width="1.5" PointX="24.75" PointY="121.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbllossescode" Width="1.5" PointX="16.5" PointY="108.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbllossofentry" Width="1.5" PointX="18.75" PointY="84.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmachineaxisdetail" Width="1.5" PointX="20.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmachinecategory" Width="1.5" PointX="20.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmachinedetail" Width="1.5" PointX="16.5" PointY="116.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmailid" Width="1.5" PointX="20.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmasterparts_st_sw" Width="1.5" PointX="8.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmimic" Width="1.5" PointX="18.75" PointY="141.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmode" Width="1.5" PointX="21.75" PointY="115.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmodetemp" Width="1.5" PointX="21.75" PointY="127.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmodulehelper" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmodulemaster" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmodule" Width="1.5" PointX="27.75" PointY="113.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblmultipleworkorder" Width="1.5" PointX="24.75" PointY="128.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblNcProgramTransferMain" Width="1.5" PointX="18.75" PointY="163.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbloeedashboardfinalvariable" Width="1.5" PointX="4.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbloeedashboardvariable" Width="1.5" PointX="22.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbloeedashboardvariablestoday" Width="1.5" PointX="22.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblOperatorDashboard" Width="1.5" PointX="18.75" PointY="167.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblOperatorHeader" Width="1.5" PointX="18.75" PointY="172.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblpartlearningreport" Width="1.5" PointX="16.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblpart" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblpartscountandcutting" Width="1.5" PointX="18.75" PointY="176.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblplannedbreak" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblplant" Width="1.5" PointX="0.75" PointY="100.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblpmsdetail" Width="1.5" PointX="22.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblPresentTool" Width="1.5" PointX="12.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblpriorityalarm" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblProdPlanMaster" Width="1.5" PointX="24.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblprogramtransferhistory" Width="1.5" PointX="24.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblrejectqty" Width="1.5" PointX="27" PointY="165.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblrejectreason" Width="1.5" PointX="24.75" PointY="116.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblreportholder" Width="1.5" PointX="24.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblrolemodulelink" Width="1.5" PointX="30" PointY="117.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblrole" Width="1.5" PointX="25.5" PointY="112" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblSAPInput" Width="1.5" PointX="24.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblsendermailid" Width="1.5" PointX="18.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblSetupMaint" Width="1.5" PointX="18.75" PointY="114" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblshift_breaks" Width="1.5" PointX="24.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblshift_mstr" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblshiftdetail" Width="1.5" PointX="5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblshiftdetails_machinewise" Width="1.5" PointX="18.75" PointY="189.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblshiftmethod" Width="1.5" PointX="2.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblshiftplanner" Width="1.5" PointX="27.75" PointY="123.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblshop" Width="1.5" PointX="3" PointY="145.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblToolCounter" Width="1.5" PointX="20.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbltoollifeoperator" Width="1.5" PointX="18.75" PointY="199.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbltosapfilepath" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbltosapshopname" Width="1.5" PointX="0.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblunit" Width="1.5" PointX="18.75" PointY="90.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbluser" Width="1.5" PointX="27.75" PointY="117.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblwolossess" Width="1.5" PointX="26.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblworeport" Width="1.5" PointX="26.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblworkorderentry" Width="1.5" PointX="18.75" PointY="210.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.weekdata" Width="1.5" PointX="10.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.shift_master" Width="1.5" PointX="12.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_livecbmdetails" Width="1.5" PointX="26.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tbl_livetblsensorvalue" Width="1.5" PointX="26.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblAndonDisplayRotate" Width="1.5" PointX="6.75" PointY="27.75" IsExpanded="true" />
+        <AssociationConnector Association="unitworksccsModel.cellID_tblcell_tblpmchecklist" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.plantID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.pmcpID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.shopID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_cellID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.plantid_tblplant" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.shopid_tblshop" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.cellid_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.machineID_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.PlantID_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.ShopID_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblkl_tblMachineSensor" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.SID_FK_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbllk_tblMachineSensor" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.axisid" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.logfreqid" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.unit" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.uid" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreport_log_AutoReportID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreportsetting_BasedOnID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreportsetting_ReportCellID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreportsetting_ReportID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreportsetting_ReportPlantID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreportsetting_ReportShopID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreportsetting_ReportTimeID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_autoreportsetting_ReportWorkCentreID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbl_axisdet_AxisMachineIDIdx" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_CycleTimeAnalysis_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_OEEDetails_tbl_MachineDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_ProdAndonDisp_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_ProdAndonDisp_tblworkorderentry" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_ProdManMachine_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_ProdManMachine_tblworkorderentry" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_ProdOrderLosses_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbl_UtilReport_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblAndonDispDEt_tblcell" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblAndonDispDEt_tblplant" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblAndonDispDEt_tblshop" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblAndonImageTextScheduledDisplay_tblcell" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblAndonImageTextScheduledDisplay_tblplant" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblAndonImageTextScheduledDisplay_tblshop" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.CellID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.cpid" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.MachineID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.PlantID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.ShopID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmode_tblbreakdown1" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmodetemp_tblbreakdown" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblbreakdown_BreakdowncodeId" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.CellID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblcell_PlantsId" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblcell_ShopId" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblemailescalation_CellIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmachinedetails_CellIDtblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmultipleworkorder_CellIDtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblrejectreason_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblshiftplanner_CellIDshiftplanner" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbldailyprodstatus_MachineID1" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbldowntimedetails_tbldowntimedetails_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblemailescalation_PlantIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblemailescalation_ReasonLevel1FK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblemailescalation_ReasonLevel2FK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblemailescalation_ReasonLevel3FK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblemailescalation_ShopIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblemailescalation_WCIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblescalationlog_EscalationLossCodeID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblgenericworkentry_GenericWorkID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbllivedailyprodstatus_MachineIDLDPS" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmode_tbllossescodes1" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmode_tblmachinedetails1" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmode_tblbreakdown" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmode_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmodetemp_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblSetupMaint_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tbllossofentry_LossCodeID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmode_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblmodetemp_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblNcProgramTransferMain_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblOperatorDashboard_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblOperatorHeader_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblSetupMaint_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tbltoollifeoperator_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblworkorderentry_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.MachineID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmachinedetails_PlantIDtblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmachinedetails_ShopIDtblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmimics_MachineID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmultipleworkorder_WCIDtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblrejectreason_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblshiftdetails_machinewise_MachineIDShiftWise" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblshiftplanner_MachineIDshiftplanner" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblusers_MachineFkforUser" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblrolemodulelink_tblmodules" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmultipleworkorder_PlantIDtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblmultipleworkorder_ShopIdtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblparts_tblparts" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblplannedbreak_shiftbreak" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblshiftplanner_PlantIDshiftplanner" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblshop_PlantID" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblrejectqty_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblrejectqty_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblrolemodulelink_tblroles" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblrolemodulelink_InsertedBy_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblusers_primaryrole" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.FK_tblusers_secondary" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblusers_PrimaryRole" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblusers_SecondaryRole" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblshiftdetails_ShiftMethodIDshiftmethod" ManuallyRouted="false" />
+        <AssociationConnector Association="unitworksccsModel.tblshiftplanner_ShopIDshiftplanner" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="unitworksccsModel.tblStdToolLife" Width="1.5" PointX="23.375" PointY="25.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
