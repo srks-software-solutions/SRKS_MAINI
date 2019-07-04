@@ -22,10 +22,10 @@ namespace SRKSDemo.Server_Model
             this.tblemailescalations1 = new HashSet<tblemailescalation>();
             this.tblemailescalations2 = new HashSet<tblemailescalation>();
             this.tblescalationlogs = new HashSet<tblescalationlog>();
-            this.tbllivemodes = new HashSet<tbllivemode>();
             this.tblmodetemps = new HashSet<tblmodetemp>();
             this.tblSetupMaints = new HashSet<tblSetupMaint>();
             this.tbllossofentries = new HashSet<tbllossofentry>();
+            this.tbllivemodes = new HashSet<tbllivemode>();
             this.tblmodes = new HashSet<tblmode>();
             this.tblmodes1 = new HashSet<tblmode>();
         }
@@ -60,13 +60,13 @@ namespace SRKSDemo.Server_Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblescalationlog> tblescalationlogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbllivemode> tbllivemodes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblmodetemp> tblmodetemps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSetupMaint> tblSetupMaints { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbllossofentry> tbllossofentries { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbllivemode> tbllivemodes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblmode> tblmodes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,73 +1,57 @@
 ﻿@{
-    ViewBag.Title = "UnitWorks - IDLE Selection";
-    Layout = "~/Views/Shared/_OperatorLayout1.cshtml";
+    ViewBag.Title = "SRKSDemo - IDLE Selection";
+    Layout = "~/Views/Shared/_OperatorLayout.cshtml";
 }
 <div class="mp_content">
-    <div class="row">
-        <div class="col-sm-6">
-            <h3> IDLE / LOSS Window</h3>
+    <h3>
+        IDLE / LOSS Window
+    </h3>
+    <form method="post" action="/OperatorEntry/IDLEPopup">
+        <div>
+            @foreach (var level in ViewBag.lossCodes)
+            {
+                if (ViewBag.level == 1)
+                {
+                    if (level.LossCodesLevel == ViewBag.level)
+                    {
+                        @*<button type="submit" name ="button" class="btn btn-primary"  action="/OperatorEntry/SettingWindow"  value="@level.LossCodeID"> @level.LossCode </button>*@
+                        <button type="button" name="buttonlevelOne" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(@level.LossCodeID, 1)" value="@level.LossCodeID"> @level.LossCode </button>
+                    }
+                }
+                if (ViewBag.level == 2)
+                {
+                    if (level.LossCodesLevel == ViewBag.level && level.LossCodesLevel1ID == ViewBag.lossCodeID)
+                    {
+                        @*<button type="submit" name ="button" class="btn btn-primary"  action="/OperatorEntry/SettingWindow"  value="@level.LossCodeID"> @level.LossCode </button>*@
+                        <button type="button" name="buttonlevelTwo" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(@level.LossCodeID, 2)" value="@level.LossCodeID"> @level.LossCode </button>
+                    }
+                }
+                if (ViewBag.level == 3)
+                {
+                    if (level.LossCodesLevel == ViewBag.level && level.LossCodesLevel2ID == ViewBag.lossCodeID)
+                    {
+                        <button type="button" name="button" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="if (confirm('Are you sure?')) { window.location.href = '@Url.Action("SaveSetting", "OperatorEntry",new {  LossSelect= level.LossCodeID })'; }" value="@level.LossCodeID"> @level.LossCode </button>
+                    }
+                }
+            }
+            @if (ViewBag.MachineMode != "Setting" && ViewBag.MachineMode != "MNT")
+            {
+                @Html.ActionLink("Setting", "SettingWindow", "OperatorEntry", new { @class = "col-sm-2 col-xs-2 btn btn-primary f-s-18" })
+                @Html.ActionLink("Maintenance", "MaintenanceWindow", "OperatorEntry", new { @class = "col-sm-2 col-xs-2 btn btn-primary f-s-18" })
+            }
+            <input type="text" name="LossSelect" id="LossSelect" hidden="hidden" />
         </div>
-        @*<div class="col-sm-6">
-                <h3>CELL Idle Count:@ViewData["CellIdle"]</h3>
-            </div>*@
-    </div>
-    <form>
-        <input class="col-sm-1" type="checkbox" id="allcheck" style="zoom:1.5;"><h3>Apply Same Loss For All Machines </h3></input>
     </form>
-    <div id="IdelPopUp">
-    </div>
-
 </div>
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
-
-<script>
-    $(document).ready(function () {        
-        GetIdelMachinespopup();
-    });
-
-    function GetIdelMachinespopup() {
-        $('#IdelPopUp').html('');
-        $.getJSON("/OperatorEntryModel/GetMachinePopup", {}, function (result) {
-            var cssdata = '<form>';
-            var msg = result;
-            var count = msg.length;
-            var slno = 1;
-            if (msg != null) {
-                for (var i = 0; i < msg.length; i++) {
-                    var LossCode = msg[i].LLoss;
-                    cssdata += '<div class="row"><h3 class="col-sm-2">' + msg[i].machinename + ' </h3> <h3>Start Time:' + msg[i].starttimeidle + '  &nbsp;&nbsp;&nbsp;Idle No:'+slno+'</label></h3><div>';
-                    for (var j = 0; j < LossCode.length; j++) {
-                        if (LossCode[j].losslevel == 1) {
-                            cssdata += '<button type="button" name="buttonlevelOne"  class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(' + LossCode[j].losscodeid + ', 1,' + msg[i].MachineID + ',' + count + ')" value="' + LossCode[j].losscodeid + '"> ' + LossCode[j].losscode + ' </button>';
-                        }
-                        if (LossCode[j].losslevel == 2) {
-                            cssdata += '<button type="button" name="buttonlevelOne" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(' + LossCode[j].losscodeid + ', 2,' + msg[i].MachineID + ',' + count + ')" value="' + LossCode[j].losscodeid + '"> ' + LossCode[j].losscode + ' </button>';
-                        }
-                        if (LossCode[j].losslevel == 3) {
-                            cssdata += '<button type="button" name="buttonlevelOne"  class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(' + LossCode[j].losscodeid + ', 3,' + msg[i].MachineID + ',' + count + ')" value="' + LossCode[j].losscodeid + '"> ' + LossCode[j].losscode + ' </button>';
-                        }
-
-                    }
-                    cssdata += '</div></div>';
-                    slno = slno + 1;
-                }
-            }
-            cssdata += '</form>';
-            $('#IdelPopUp').append(cssdata);
-        });
-    }
-</script>
-
-
 <script type="text/javascript">
-
-    function lastNode(LossCodeID, Level, MachineID,count) {
+    function lastNode(LossCodeID, Level) {
 
         var sorf = "";
         $.ajax({
             type: "POST",
-            url: "/OperatorEntryModel/ServerPing",
+            url: "/OperatorEntry/ServerPing",
             async: false,
             success: function (data) {
                 var status = data;
@@ -96,7 +80,7 @@
             'id': LossCodeID,
             'lev': Level
         });
-            var request = '/OperatorEntryModel/lastNodeIdleCheck/' + LossCodeID + '?lev=' + Level;
+        var request = '/OperatorEntry/lastNodeIdleCheck/' + LossCodeID + '?lev=' + Level;
         $.get(
             request,
             function (data) {
@@ -106,25 +90,14 @@
                 var buttonClickID = response[1].toString();
                 if (LastNode == "true") {
                     if (confirm('Are you sure?')) {
-                        if (document.getElementById('allcheck').checked == true) {
-                            if (count > 1) {
-                                window.location.href = '@Url.Action("SaveIdle", "OperatorEntryModel")' + '?LossSelect=' + buttonClickID + '&machineid=' + MachineID + '&Flage=' + true + ''+'&Count='+count;
-                            }
-                            else {
-                                window.location.href = '@Url.Action("SaveIdle", "OperatorEntryModel")' + '?LossSelect=' + buttonClickID + '&machineid=' + MachineID + '&Flage=' + false + '' + '&Count=' + count;
-                            }
-                        }
-                        else {
-                            window.location.href = '@Url.Action("SaveIdle", "OperatorEntryModel")' + '?LossSelect=' + buttonClickID + '&machineid=' + MachineID + '&Flage=' + false + '' + '&Count=' + count;
-                        }
-
+                        window.location.href = '@Url.Action("SaveIdle", "OperatorEntry")' + '?selectLoss=' + buttonClickID;
                     }
                 } else
                 {
                   //  $.post('/OperatorEntry/SettingWindow/?l=' + buttonClickID);
                     //window.location.href = '/OperatorEntry/SettingWindow /?l = ' + buttonClickID;
                     //$("form").attr("action", '/OperatorEntry/SettingWindow/?l =' + buttonClickID);
-                    $("form").attr("action", '/OperatorEntryModel/IDLEPopup');
+                    $("form").attr("action", '/OperatorEntry/IDLEPopup');
                     $("form").attr("name", "buttonlevelOne");
                     $("form").attr("value", buttonClickID);
                     $("form").attr("mode", "post");
@@ -137,7 +110,7 @@
             //block();
         }
 
-
+        
     }
 </script>
 <script>

@@ -1490,30 +1490,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <Property Name="EmployeeCode" Type="nvarchar" MaxLength="45" />
           <Property Name="EmployeeDesignation" Type="nvarchar" MaxLength="45" />
         </EntityType>
-        <EntityType Name="tblmaintainanceProdBrDetails">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="roleId" Type="int" />
-          <Property Name="machineName" Type="nvarchar" MaxLength="200" />
-          <Property Name="reasonName" Type="nvarchar" MaxLength="500" />
-          <Property Name="operatorName" Type="varchar" MaxLength="200" />
-          <Property Name="maintainanceOperatorName" Type="varchar" MaxLength="200" />
-          <Property Name="breakdownReasonDateTime" Type="datetime" />
-          <Property Name="maintainanceRemarks" Type="nvarchar" MaxLength="500" />
-          <Property Name="productionRemarks" Type="nvarchar" MaxLength="500" />
-          <Property Name="maintainanceStatus" Type="bit" />
-          <Property Name="productionStatus" Type="bit" />
-          <Property Name="acceptanceTime" Type="datetime" />
-          <Property Name="closureTime" Type="datetime" />
-          <Property Name="rejectReason" Type="nvarchar" MaxLength="500" />
-          <Property Name="isDeleted" Type="int" />
-          <Property Name="createdOn" Type="datetime" />
-          <Property Name="createdBy" Type="varchar" MaxLength="500" />
-          <Property Name="modifiedBy" Type="varchar" MaxLength="500" />
-          <Property Name="modifiedOn" Type="datetime" />
-        </EntityType>
         <EntityType Name="tblmasterparts_st_sw">
           <Key>
             <PropertyRef Name="PARTSSTSWID" />
@@ -4013,7 +3989,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <EntitySet Name="tblmachinecategory" EntityType="Self.tblmachinecategory" Schema="unitworkccs" store:Type="Tables" />
           <EntitySet Name="tblmachinedetails" EntityType="Self.tblmachinedetails" Schema="unitworkccs" store:Type="Tables" />
           <EntitySet Name="tblmailids" EntityType="Self.tblmailids" Schema="unitworkccs" store:Type="Tables" />
-          <EntitySet Name="tblmaintainanceProdBrDetails" EntityType="Self.tblmaintainanceProdBrDetails" Schema="unitworkccs" store:Type="Tables" />
           <EntitySet Name="tblmasterparts_st_sw" EntityType="Self.tblmasterparts_st_sw" Schema="unitworkccs" store:Type="Tables" />
           <EntitySet Name="tblmimics" EntityType="Self.tblmimics" Schema="unitworkccs" store:Type="Tables" />
           <EntitySet Name="tblmode" EntityType="Self.tblmode" Schema="unitworkccs" store:Type="Tables" />
@@ -5493,9 +5468,9 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <Property Name="MessageDesc" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="MessageCode" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="DoneWithRow" Type="Int32" />
-          <NavigationProperty Name="tbllivemodes" Relationship="Self.FK_tblmode_tblbreakdown1" FromRole="tblbreakdown" ToRole="tbllivemode" />
           <NavigationProperty Name="tblmodetemps" Relationship="Self.FK_tblmodetemp_tblbreakdown" FromRole="tblbreakdown" ToRole="tblmodetemp" />
           <NavigationProperty Name="tbllossescode" Relationship="Self.tblbreakdown_BreakdowncodeId" FromRole="tblbreakdown" ToRole="tbllossescodes" />
+          <NavigationProperty Name="tbllivemodes" Relationship="unitworksccsModel.FK_tblmode_tblbreakdown1" FromRole="tblbreakdown" ToRole="tbllivemode" />
         </EntityType>
         <EntityType Name="tblcell">
           <Key>
@@ -5525,8 +5500,8 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <NavigationProperty Name="tblmultipleworkorders" Relationship="Self.tblmultipleworkorder_CellIDtblMWO" FromRole="tblcell" ToRole="tblmultipleworkorder" />
           <NavigationProperty Name="tblrejectreasons" Relationship="Self.tblrejectreason_ibfk_1" FromRole="tblcell" ToRole="tblrejectreason" />
           <NavigationProperty Name="tblshiftplanners" Relationship="Self.tblshiftplanner_CellIDshiftplanner" FromRole="tblcell" ToRole="tblshiftplanner" />
-          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.cellid_tblprimitivemaintainancescheduling2223" FromRole="tblcell" ToRole="configuration_tblprimitivemaintainancescheduling" />
           <NavigationProperty Name="tblmachinedetails" Relationship="unitworksccsModel.tblmachinedetails_CellIDtblmachinedetails" FromRole="tblcell" ToRole="tblmachinedetail" />
+          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.cellid_tblprimitivemaintainancescheduling2223" FromRole="tblcell" ToRole="configuration_tblprimitivemaintainancescheduling" />
         </EntityType>
         <EntityType Name="tblcellpart">
           <Key>
@@ -5830,39 +5805,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <Property Name="ColorCode" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.tbllivedailyprodstatus_MachineIDLDPS" FromRole="tbllivedailyprodstatu" ToRole="tblmachinedetail" />
         </EntityType>
-        <EntityType Name="tbllivemode">
-          <Key>
-            <PropertyRef Name="ModeID" />
-          </Key>
-          <Property Name="ModeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MachineID" Type="Int32" Nullable="false" />
-          <Property Name="MacMode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="InsertedOn" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="InsertedBy" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="CorrectedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
-          <Property Name="StartTime" Type="DateTime" Precision="0" />
-          <Property Name="EndTime" Type="DateTime" Precision="0" />
-          <Property Name="ColorCode" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="IsCompleted" Type="Int32" Nullable="false" />
-          <Property Name="DurationInSec" Type="Int32" />
-          <Property Name="LossCodeID" Type="Int32" />
-          <Property Name="BreakdownID" Type="Int32" />
-          <Property Name="ModeType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ModeTypeEnd" Type="Int32" Nullable="false" />
-          <Property Name="StartIdle" Type="Int32" Nullable="false" />
-          <Property Name="LossCodeEnteredTime" Type="DateTime" Precision="3" />
-          <Property Name="LossCodeEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsInserted" Type="Int32" Nullable="false" />
-          <Property Name="TotalPartsCount" Type="Int32" />
-          <Property Name="CuttingDuration" Type="Int32" />
-          <NavigationProperty Name="tblbreakdown" Relationship="Self.FK_tblmode_tblbreakdown1" FromRole="tbllivemode" ToRole="tblbreakdown" />
-          <NavigationProperty Name="tbllossescode" Relationship="Self.FK_tblmode_tbllossescodes1" FromRole="tbllivemode" ToRole="tbllossescodes" />
-          <Property Name="IsShiftEnd" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.FK_tblmode_tblmachinedetails1" FromRole="tbllivemode" ToRole="tblmachinedetail" />
-        </EntityType>
         <EntityType Name="tbllossescode">
           <Key>
             <PropertyRef Name="LossCodeID" />
@@ -5890,10 +5832,10 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <NavigationProperty Name="tblemailescalations1" Relationship="Self.tblemailescalation_ReasonLevel2FK" FromRole="tbllossescodes" ToRole="tblemailescalation" />
           <NavigationProperty Name="tblemailescalations2" Relationship="Self.tblemailescalation_ReasonLevel3FK" FromRole="tbllossescodes" ToRole="tblemailescalation" />
           <NavigationProperty Name="tblescalationlogs" Relationship="Self.tblescalationlog_EscalationLossCodeID" FromRole="tbllossescodes" ToRole="tblescalationlog" />
-          <NavigationProperty Name="tbllivemodes" Relationship="Self.FK_tblmode_tbllossescodes1" FromRole="tbllossescodes" ToRole="tbllivemode" />
           <NavigationProperty Name="tblmodetemps" Relationship="Self.FK_tblmodetemp_tbllossescodes" FromRole="tbllossescodes" ToRole="tblmodetemp" />
           <NavigationProperty Name="tblSetupMaints" Relationship="Self.FK_tblSetupMaint_tbllossescodes" FromRole="tbllossescodes" ToRole="tblSetupMaint" />
           <NavigationProperty Name="tbllossofentries" Relationship="Self.tbllossofentry_LossCodeID" FromRole="tbllossescodes" ToRole="tbllossofentry" />
+          <NavigationProperty Name="tbllivemodes" Relationship="unitworksccsModel.FK_tblmode_tbllossescodes1" FromRole="tbllossescode" ToRole="tbllivemode" />
           <NavigationProperty Name="tblmodes" Relationship="unitworksccsModel.FK_tblmode_tblbreakdown" FromRole="tbllossescode" ToRole="tblmode" />
           <NavigationProperty Name="tblmodes1" Relationship="unitworksccsModel.FK_tblmode_tbllossescodes" FromRole="tbllossescode" ToRole="tblmode" />
         </EntityType>
@@ -6361,8 +6303,8 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <NavigationProperty Name="tblmultipleworkorders" Relationship="Self.tblmultipleworkorder_PlantIDtblMWO" FromRole="tblplant" ToRole="tblmultipleworkorder" />
           <NavigationProperty Name="tblshiftplanners" Relationship="Self.tblshiftplanner_PlantIDshiftplanner" FromRole="tblplant" ToRole="tblshiftplanner" />
           <NavigationProperty Name="tblshops" Relationship="Self.tblshop_PlantID" FromRole="tblplant" ToRole="tblshop" />
-          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.PlantID_tblprimitivemaintainancescheduling2223" FromRole="tblplant" ToRole="configuration_tblprimitivemaintainancescheduling" />
           <NavigationProperty Name="tblmachinedetails" Relationship="unitworksccsModel.tblmachinedetails_PlantIDtblmachinedetails" FromRole="tblplant" ToRole="tblmachinedetail" />
+          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.PlantID_tblprimitivemaintainancescheduling2223" FromRole="tblplant" ToRole="configuration_tblprimitivemaintainancescheduling" />
         </EntityType>
         <EntityType Name="tblpmsdetail">
           <Key>
@@ -6721,8 +6663,8 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <NavigationProperty Name="tblmultipleworkorders" Relationship="Self.tblmultipleworkorder_ShopIdtblMWO" FromRole="tblshop" ToRole="tblmultipleworkorder" />
           <NavigationProperty Name="tblplant" Relationship="Self.tblshop_PlantID" FromRole="tblshop" ToRole="tblplant" />
           <NavigationProperty Name="tblshiftplanners" Relationship="Self.tblshiftplanner_ShopIDshiftplanner" FromRole="tblshop" ToRole="tblshiftplanner" />
-          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.ShopID_tblprimitivemaintainancescheduling2223" FromRole="tblshop" ToRole="configuration_tblprimitivemaintainancescheduling" />
           <NavigationProperty Name="tblmachinedetails" Relationship="unitworksccsModel.tblmachinedetails_ShopIDtblmachinedetails" FromRole="tblshop" ToRole="tblmachinedetail" />
+          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.ShopID_tblprimitivemaintainancescheduling2223" FromRole="tblshop" ToRole="configuration_tblprimitivemaintainancescheduling" />
         </EntityType>
         <EntityType Name="tblToolCounter">
           <Key>
@@ -7390,18 +7332,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblmode_tblbreakdown1">
-          <End Role="tblbreakdown" Type="Self.tblbreakdown" Multiplicity="0..1" />
-          <End Role="tbllivemode" Type="Self.tbllivemode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblbreakdown">
-              <PropertyRef Name="BreakdownID" />
-            </Principal>
-            <Dependent Role="tbllivemode">
-              <PropertyRef Name="BreakdownID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblmodetemp_tblbreakdown">
           <End Role="tblbreakdown" Type="Self.tblbreakdown" Multiplicity="0..1" />
           <End Role="tblmodetemp" Type="Self.tblmodetemp" Multiplicity="*" />
@@ -7603,18 +7533,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             </Principal>
             <Dependent Role="tblgenericworkentry">
               <PropertyRef Name="GWCodeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblmode_tbllossescodes1">
-          <End Role="tbllossescodes" Type="Self.tbllossescode" Multiplicity="0..1" />
-          <End Role="tbllivemode" Type="Self.tbllivemode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbllossescodes">
-              <PropertyRef Name="LossCodeID" />
-            </Principal>
-            <Dependent Role="tbllivemode">
-              <PropertyRef Name="LossCodeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7933,7 +7851,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <EntitySet Name="tblholidays" EntityType="Self.tblholiday" />
           <EntitySet Name="tblHolidayTypeMasters" EntityType="Self.tblHolidayTypeMaster" />
           <EntitySet Name="tbllivedailyprodstatus" EntityType="Self.tbllivedailyprodstatu" />
-          <EntitySet Name="tbllivemodes" EntityType="Self.tbllivemode" />
           <EntitySet Name="tbllossescodes" EntityType="Self.tbllossescode" />
           <EntitySet Name="tbllossofentries" EntityType="Self.tbllossofentry" />
           <EntitySet Name="tblmachineaxisdetails" EntityType="Self.tblmachineaxisdetail" />
@@ -8118,10 +8035,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             <End Role="tblshop" EntitySet="tblshops" />
             <End Role="tblbottelneck" EntitySet="tblbottelnecks" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblmode_tblbreakdown1" Association="Self.FK_tblmode_tblbreakdown1">
-            <End Role="tblbreakdown" EntitySet="tblbreakdowns" />
-            <End Role="tbllivemode" EntitySet="tbllivemodes" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblmodetemp_tblbreakdown" Association="Self.FK_tblmodetemp_tblbreakdown">
             <End Role="tblbreakdown" EntitySet="tblbreakdowns" />
             <End Role="tblmodetemp" EntitySet="tblmodetemps" />
@@ -8189,10 +8102,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <AssociationSet Name="tblgenericworkentry_GenericWorkID" Association="Self.tblgenericworkentry_GenericWorkID">
             <End Role="tblgenericworkcodes" EntitySet="tblgenericworkcodes" />
             <End Role="tblgenericworkentry" EntitySet="tblgenericworkentries" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblmode_tbllossescodes1" Association="Self.FK_tblmode_tbllossescodes1">
-            <End Role="tbllossescodes" EntitySet="tbllossescodes" />
-            <End Role="tbllivemode" EntitySet="tbllivemodes" />
           </AssociationSet>
           <AssociationSet Name="FK_tblmodetemp_tbllossescodes" Association="Self.FK_tblmodetemp_tbllossescodes">
             <End Role="tbllossescodes" EntitySet="tbllossescodes" />
@@ -8285,22 +8194,8 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             <End Role="tblOperatorLoginDetail" EntitySet="tblOperatorLoginDetails" />
             <End Role="tblOperatorMachineDetail" EntitySet="tblOperatorMachineDetails" />
           </AssociationSet>
-          <EntitySet Name="configuration_tblprimitivemaintainancescheduling" EntityType="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" />
-          <AssociationSet Name="cellid_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.cellid_tblprimitivemaintainancescheduling2223">
-            <End Role="tblcell" EntitySet="tblcells" />
-            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
-          </AssociationSet>
-          <AssociationSet Name="PlantID_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.PlantID_tblprimitivemaintainancescheduling2223">
-            <End Role="tblplant" EntitySet="tblplants" />
-            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
-          </AssociationSet>
-          <AssociationSet Name="ShopID_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.ShopID_tblprimitivemaintainancescheduling2223">
-            <End Role="tblshop" EntitySet="tblshops" />
-            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
-          </AssociationSet>
           <EntitySet Name="tblBreakdowncodes" EntityType="unitworksccsModel.tblBreakdowncode" />
           <EntitySet Name="tblBreakDownTickects" EntityType="unitworksccsModel.tblBreakDownTickect" />
-          <EntitySet Name="tblmaintainanceProdBrDetails" EntityType="unitworksccsModel.tblmaintainanceProdBrDetail" />
           <AssociationSet Name="FK_tblBreakDownTickect_tbllossescodes" Association="unitworksccsModel.FK_tblBreakDownTickect_tbllossescodes">
             <End Role="tblBreakdowncode" EntitySet="tblBreakdowncodes" />
             <End Role="tblBreakDownTickect" EntitySet="tblBreakDownTickects" />
@@ -8317,11 +8212,9 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             <End Role="tblworkorderentry" EntitySet="tblworkorderentries" />
             <End Role="tblBreakDownTickect" EntitySet="tblBreakDownTickects" />
           </AssociationSet>
+          <EntitySet Name="tbllivemodes" EntityType="unitworksccsModel.tbllivemode" />
           <EntitySet Name="tblmachinedetails" EntityType="unitworksccsModel.tblmachinedetail" />
-          <AssociationSet Name="machineID_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.machineID_tblprimitivemaintainancescheduling2223">
-            <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
-            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
-          </AssociationSet>
+          <EntitySet Name="tblmodes" EntityType="unitworksccsModel.tblmode" />
           <AssociationSet Name="FK_tbllk_tblMachineSensor" Association="unitworksccsModel.FK_tbllk_tblMachineSensor">
             <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
             <End Role="configurationtblmachinesensor" EntitySet="configurationtblmachinesensors" />
@@ -8362,6 +8255,10 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
             <End Role="tblbottelneck" EntitySet="tblbottelnecks" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblmode_tblbreakdown1" Association="unitworksccsModel.FK_tblmode_tblbreakdown1">
+            <End Role="tblbreakdown" EntitySet="tblbreakdowns" />
+            <End Role="tbllivemode" EntitySet="tbllivemodes" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblBreakDownTickect_tblmachinedetails" Association="unitworksccsModel.FK_tblBreakDownTickect_tblmachinedetails">
             <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
             <End Role="tblBreakDownTickect" EntitySet="tblBreakDownTickects" />
@@ -8382,9 +8279,25 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
             <End Role="tbllivedailyprodstatu" EntitySet="tbllivedailyprodstatus" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblmode_tbllossescodes1" Association="unitworksccsModel.FK_tblmode_tbllossescodes1">
+            <End Role="tbllossescode" EntitySet="tbllossescodes" />
+            <End Role="tbllivemode" EntitySet="tbllivemodes" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblmode_tblmachinedetails1" Association="unitworksccsModel.FK_tblmode_tblmachinedetails1">
             <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
             <End Role="tbllivemode" EntitySet="tbllivemodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblmode_tblbreakdown" Association="unitworksccsModel.FK_tblmode_tblbreakdown">
+            <End Role="tbllossescode" EntitySet="tbllossescodes" />
+            <End Role="tblmode" EntitySet="tblmodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblmode_tbllossescodes" Association="unitworksccsModel.FK_tblmode_tbllossescodes">
+            <End Role="tbllossescode" EntitySet="tbllossescodes" />
+            <End Role="tblmode" EntitySet="tblmodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblmode_tblmachinedetails" Association="unitworksccsModel.FK_tblmode_tblmachinedetails">
+            <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
+            <End Role="tblmode" EntitySet="tblmodes" />
           </AssociationSet>
           <AssociationSet Name="FK_tblmodetemp_tblmachinedetails" Association="unitworksccsModel.FK_tblmodetemp_tblmachinedetails">
             <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
@@ -8455,20 +8368,24 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
             <End Role="tblpartscountandcutting" EntitySet="tblpartscountandcuttings" />
           </AssociationSet>
-          <EntitySet Name="tblmodes" EntityType="unitworksccsModel.tblmode" />
-          <AssociationSet Name="FK_tblmode_tblbreakdown" Association="unitworksccsModel.FK_tblmode_tblbreakdown">
-            <End Role="tbllossescode" EntitySet="tbllossescodes" />
-            <End Role="tblmode" EntitySet="tblmodes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblmode_tbllossescodes" Association="unitworksccsModel.FK_tblmode_tbllossescodes">
-            <End Role="tbllossescode" EntitySet="tbllossescodes" />
-            <End Role="tblmode" EntitySet="tblmodes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblmode_tblmachinedetails" Association="unitworksccsModel.FK_tblmode_tblmachinedetails">
-            <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
-            <End Role="tblmode" EntitySet="tblmodes" />
-          </AssociationSet>
           <EntitySet Name="tblPrecentColours" EntityType="unitworksccsModel.tblPrecentColour" />
+          <EntitySet Name="configuration_tblprimitivemaintainancescheduling" EntityType="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" />
+          <AssociationSet Name="cellid_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.cellid_tblprimitivemaintainancescheduling2223">
+            <End Role="tblcell" EntitySet="tblcells" />
+            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
+          </AssociationSet>
+          <AssociationSet Name="machineID_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.machineID_tblprimitivemaintainancescheduling2223">
+            <End Role="tblmachinedetail" EntitySet="tblmachinedetails" />
+            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
+          </AssociationSet>
+          <AssociationSet Name="PlantID_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.PlantID_tblprimitivemaintainancescheduling2223">
+            <End Role="tblplant" EntitySet="tblplants" />
+            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
+          </AssociationSet>
+          <AssociationSet Name="ShopID_tblprimitivemaintainancescheduling2223" Association="unitworksccsModel.ShopID_tblprimitivemaintainancescheduling2223">
+            <End Role="tblshop" EntitySet="tblshops" />
+            <End Role="configuration_tblprimitivemaintainancescheduling" EntitySet="configuration_tblprimitivemaintainancescheduling" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="tblStdToolLife">
           <Key>
@@ -8551,69 +8468,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="configuration_tblprimitivemaintainancescheduling">
-          <Key>
-            <PropertyRef Name="pmid" />
-          </Key>
-          <Property Name="pmid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MachineID" Type="Int32" Nullable="false" />
-          <Property Name="MachineName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="Month" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Week" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="CellName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="CellID" Type="Int32" Nullable="false" />
-          <Property Name="PlantID" Type="Int32" />
-          <Property Name="ShopID" Type="Int32" />
-          <Property Name="plantName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="shopname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="WeekID" Type="Int32" Nullable="false" />
-          <Property Name="MonthID" Type="Int32" />
-          <NavigationProperty Name="tblcell" Relationship="unitworksccsModel.cellid_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblcell" />
-          <NavigationProperty Name="tblplant" Relationship="unitworksccsModel.PlantID_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblplant" />
-          <NavigationProperty Name="tblshop" Relationship="unitworksccsModel.ShopID_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblshop" />
-          <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.machineID_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblmachinedetail" />
-        </EntityType>
-        <Association Name="cellid_tblprimitivemaintainancescheduling2223">
-          <End Type="unitworksccsModel.tblcell" Role="tblcell" Multiplicity="1" />
-          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblcell">
-              <PropertyRef Name="CellID" />
-            </Principal>
-            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
-              <PropertyRef Name="CellID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PlantID_tblprimitivemaintainancescheduling2223">
-          <End Type="unitworksccsModel.tblplant" Role="tblplant" Multiplicity="0..1" />
-          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblplant">
-              <PropertyRef Name="PlantID" />
-            </Principal>
-            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
-              <PropertyRef Name="PlantID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ShopID_tblprimitivemaintainancescheduling2223">
-          <End Type="unitworksccsModel.tblshop" Role="tblshop" Multiplicity="0..1" />
-          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblshop">
-              <PropertyRef Name="ShopID" />
-            </Principal>
-            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
-              <PropertyRef Name="ShopID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="tblBreakdowncode">
           <Key>
             <PropertyRef Name="BreakdownID" />
@@ -8673,30 +8527,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <NavigationProperty Name="tblworkorderentry" Relationship="unitworksccsModel.FK_tblBreakDownTickect_tblworkorderentry" FromRole="tblBreakDownTickect" ToRole="tblworkorderentry" />
           <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.FK_tblBreakDownTickect_tblmachinedetails" FromRole="tblBreakDownTickect" ToRole="tblmachinedetail" />
         </EntityType>
-        <EntityType Name="tblmaintainanceProdBrDetail">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="roleId" Type="Int32" />
-          <Property Name="machineName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="reasonName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="operatorName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="maintainanceOperatorName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="breakdownReasonDateTime" Type="DateTime" Precision="3" />
-          <Property Name="maintainanceRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="productionRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="maintainanceStatus" Type="Boolean" />
-          <Property Name="productionStatus" Type="Boolean" />
-          <Property Name="acceptanceTime" Type="DateTime" Precision="3" />
-          <Property Name="closureTime" Type="DateTime" Precision="3" />
-          <Property Name="rejectReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="isDeleted" Type="Int32" />
-          <Property Name="createdOn" Type="DateTime" Precision="3" />
-          <Property Name="createdBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="modifiedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="modifiedOn" Type="DateTime" Precision="3" />
-        </EntityType>
         <Association Name="FK_tblBreakDownTickect_tbllossescodes">
           <End Type="unitworksccsModel.tblBreakdowncode" Role="tblBreakdowncode" Multiplicity="0..1" />
           <End Type="unitworksccsModel.tblBreakDownTickect" Role="tblBreakDownTickect" Multiplicity="*" />
@@ -8745,6 +8575,39 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbllivemode">
+          <Key>
+            <PropertyRef Name="ModeID" />
+          </Key>
+          <Property Name="ModeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineID" Type="Int32" Nullable="false" />
+          <Property Name="MacMode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="InsertedOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="InsertedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="CorrectedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Precision="0" />
+          <Property Name="ColorCode" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="IsCompleted" Type="Int32" Nullable="false" />
+          <Property Name="DurationInSec" Type="Int32" />
+          <Property Name="LossCodeID" Type="Int32" />
+          <Property Name="BreakdownID" Type="Int32" />
+          <Property Name="ModeType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ModeTypeEnd" Type="Int32" Nullable="false" />
+          <Property Name="StartIdle" Type="Int32" Nullable="false" />
+          <Property Name="LossCodeEnteredTime" Type="DateTime" Precision="3" />
+          <Property Name="LossCodeEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsInserted" Type="Int32" Nullable="false" />
+          <Property Name="TotalPartsCount" Type="Int32" />
+          <Property Name="CuttingDuration" Type="Int32" />
+          <Property Name="IsShiftEnd" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblbreakdown" Relationship="unitworksccsModel.FK_tblmode_tblbreakdown1" FromRole="tbllivemode" ToRole="tblbreakdown" />
+          <NavigationProperty Name="tbllossescode" Relationship="unitworksccsModel.FK_tblmode_tbllossescodes1" FromRole="tbllivemode" ToRole="tbllossescode" />
+          <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.FK_tblmode_tblmachinedetails1" FromRole="tbllivemode" ToRole="tblmachinedetail" />
+        </EntityType>
         <EntityType Name="tblmachinedetail">
           <Key>
             <PropertyRef Name="MachineID" />
@@ -8801,7 +8664,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <Property Name="OperationNumber" Type="Int32" />
           <Property Name="IsShiftWise" Type="Int32" Nullable="false" />
           <Property Name="LossFlag" Type="Int32" />
-          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.machineID_tblprimitivemaintainancescheduling2223" FromRole="tblmachinedetail" ToRole="configuration_tblprimitivemaintainancescheduling" />
           <NavigationProperty Name="configurationtblmachinesensors" Relationship="unitworksccsModel.FK_tbllk_tblMachineSensor" FromRole="tblmachinedetail" ToRole="configurationtblmachinesensor" />
           <NavigationProperty Name="tbl_autoreportsetting" Relationship="unitworksccsModel.tbl_autoreportsetting_ReportWorkCentreID" FromRole="tblmachinedetail" ToRole="tbl_autoreportsetting" />
           <NavigationProperty Name="tbl_axisdet" Relationship="unitworksccsModel.tbl_axisdet_AxisMachineIDIdx" FromRole="tblmachinedetail" ToRole="tbl_axisdet" />
@@ -8818,6 +8680,7 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <NavigationProperty Name="tblemailescalations" Relationship="unitworksccsModel.tblemailescalation_WCIDFK" FromRole="tblmachinedetail" ToRole="tblemailescalation" />
           <NavigationProperty Name="tbllivedailyprodstatus" Relationship="unitworksccsModel.tbllivedailyprodstatus_MachineIDLDPS" FromRole="tblmachinedetail" ToRole="tbllivedailyprodstatu" />
           <NavigationProperty Name="tbllivemodes" Relationship="unitworksccsModel.FK_tblmode_tblmachinedetails1" FromRole="tblmachinedetail" ToRole="tbllivemode" />
+          <NavigationProperty Name="tblmodes" Relationship="unitworksccsModel.FK_tblmode_tblmachinedetails" FromRole="tblmachinedetail" ToRole="tblmode" />
           <NavigationProperty Name="tblmodetemps" Relationship="unitworksccsModel.FK_tblmodetemp_tblmachinedetails" FromRole="tblmachinedetail" ToRole="tblmodetemp" />
           <NavigationProperty Name="tblNcProgramTransferMains" Relationship="unitworksccsModel.FK_tblNcProgramTransferMain_tblmachinedetails" FromRole="tblmachinedetail" ToRole="tblNcProgramTransferMain" />
           <NavigationProperty Name="tblOperatorDashboards" Relationship="unitworksccsModel.FK_tblOperatorDashboard_tblmachinedetails" FromRole="tblmachinedetail" ToRole="tblOperatorDashboard" />
@@ -8835,20 +8698,40 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <NavigationProperty Name="tblshiftplanners" Relationship="unitworksccsModel.tblshiftplanner_MachineIDshiftplanner" FromRole="tblmachinedetail" ToRole="tblshiftplanner" />
           <NavigationProperty Name="tblusers" Relationship="unitworksccsModel.tblusers_MachineFkforUser" FromRole="tblmachinedetail" ToRole="tbluser" />
           <NavigationProperty Name="tblpartscountandcuttings" Relationship="unitworksccsModel.MachineID_fk" FromRole="tblmachinedetail" ToRole="tblpartscountandcutting" />
-          <NavigationProperty Name="tblmodes" Relationship="unitworksccsModel.FK_tblmode_tblmachinedetails" FromRole="tblmachinedetail" ToRole="tblmode" />
+          <NavigationProperty Name="configuration_tblprimitivemaintainancescheduling" Relationship="unitworksccsModel.machineID_tblprimitivemaintainancescheduling2223" FromRole="tblmachinedetail" ToRole="configuration_tblprimitivemaintainancescheduling" />
         </EntityType>
-        <Association Name="machineID_tblprimitivemaintainancescheduling2223">
-          <End Type="unitworksccsModel.tblmachinedetail" Role="tblmachinedetail" Multiplicity="1" />
-          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblmachinedetail">
-              <PropertyRef Name="MachineID" />
-            </Principal>
-            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
-              <PropertyRef Name="MachineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="tblmode">
+          <Key>
+            <PropertyRef Name="ModeID" />
+          </Key>
+          <Property Name="ModeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineID" Type="Int32" Nullable="false" />
+          <Property Name="MacMode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="InsertedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="CorrectedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Precision="0" />
+          <Property Name="ColorCode" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="IsCompleted" Type="Int32" Nullable="false" />
+          <Property Name="DurationInSec" Type="Int32" />
+          <Property Name="LossCodeID" Type="Int32" />
+          <Property Name="BreakdownID" Type="Int32" />
+          <Property Name="ModeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ModeTypeEnd" Type="Int32" Nullable="false" />
+          <Property Name="StartIdle" Type="Int32" Nullable="false" />
+          <Property Name="LossCodeEnteredTime" Type="DateTime" Precision="3" />
+          <Property Name="LossCodeEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsInserted" Type="Int32" Nullable="false" />
+          <Property Name="IsPiWeb" Type="Int32" />
+          <Property Name="Sync" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbllossescode" Relationship="unitworksccsModel.FK_tblmode_tblbreakdown" FromRole="tblmode" ToRole="tbllossescode" />
+          <NavigationProperty Name="tbllossescode1" Relationship="unitworksccsModel.FK_tblmode_tbllossescodes" FromRole="tblmode" ToRole="tbllossescode" />
+          <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.FK_tblmode_tblmachinedetails" FromRole="tblmode" ToRole="tblmachinedetail" />
+        </EntityType>
         <Association Name="FK_tbllk_tblMachineSensor">
           <End Type="unitworksccsModel.tblmachinedetail" Role="tblmachinedetail" Multiplicity="1" />
           <End Type="unitworksccsModel.configurationtblmachinesensor" Role="configurationtblmachinesensor" Multiplicity="*" />
@@ -8969,6 +8852,18 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblmode_tblbreakdown1">
+          <End Type="unitworksccsModel.tblbreakdown" Role="tblbreakdown" Multiplicity="0..1" />
+          <End Type="unitworksccsModel.tbllivemode" Role="tbllivemode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblbreakdown">
+              <PropertyRef Name="BreakdownID" />
+            </Principal>
+            <Dependent Role="tbllivemode">
+              <PropertyRef Name="BreakdownID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblBreakDownTickect_tblmachinedetails">
           <End Type="unitworksccsModel.tblmachinedetail" Role="tblmachinedetail" Multiplicity="0..1" />
           <End Type="unitworksccsModel.tblBreakDownTickect" Role="tblBreakDownTickect" Multiplicity="*" />
@@ -9029,6 +8924,18 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblmode_tbllossescodes1">
+          <End Type="unitworksccsModel.tbllossescode" Role="tbllossescode" Multiplicity="0..1" />
+          <End Type="unitworksccsModel.tbllivemode" Role="tbllivemode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbllossescode">
+              <PropertyRef Name="LossCodeID" />
+            </Principal>
+            <Dependent Role="tbllivemode">
+              <PropertyRef Name="LossCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblmode_tblmachinedetails1">
           <End Type="unitworksccsModel.tblmachinedetail" Role="tblmachinedetail" Multiplicity="1" />
           <End Type="unitworksccsModel.tbllivemode" Role="tbllivemode" Multiplicity="*" />
@@ -9037,6 +8944,42 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
               <PropertyRef Name="MachineID" />
             </Principal>
             <Dependent Role="tbllivemode">
+              <PropertyRef Name="MachineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblmode_tblbreakdown">
+          <End Type="unitworksccsModel.tbllossescode" Role="tbllossescode" Multiplicity="0..1" />
+          <End Type="unitworksccsModel.tblmode" Role="tblmode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbllossescode">
+              <PropertyRef Name="LossCodeID" />
+            </Principal>
+            <Dependent Role="tblmode">
+              <PropertyRef Name="BreakdownID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblmode_tbllossescodes">
+          <End Type="unitworksccsModel.tbllossescode" Role="tbllossescode" Multiplicity="0..1" />
+          <End Type="unitworksccsModel.tblmode" Role="tblmode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbllossescode">
+              <PropertyRef Name="LossCodeID" />
+            </Principal>
+            <Dependent Role="tblmode">
+              <PropertyRef Name="LossCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblmode_tblmachinedetails">
+          <End Type="unitworksccsModel.tblmachinedetail" Role="tblmachinedetail" Multiplicity="1" />
+          <End Type="unitworksccsModel.tblmode" Role="tblmode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmachinedetail">
+              <PropertyRef Name="MachineID" />
+            </Principal>
+            <Dependent Role="tblmode">
               <PropertyRef Name="MachineID" />
             </Dependent>
           </ReferentialConstraint>
@@ -9270,74 +9213,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tblmode">
-          <Key>
-            <PropertyRef Name="ModeID" />
-          </Key>
-          <Property Name="ModeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MachineID" Type="Int32" Nullable="false" />
-          <Property Name="MacMode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="InsertedOn" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="InsertedBy" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="CorrectedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
-          <Property Name="StartTime" Type="DateTime" Precision="0" />
-          <Property Name="EndTime" Type="DateTime" Precision="0" />
-          <Property Name="ColorCode" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="IsCompleted" Type="Int32" Nullable="false" />
-          <Property Name="DurationInSec" Type="Int32" />
-          <Property Name="LossCodeID" Type="Int32" />
-          <Property Name="BreakdownID" Type="Int32" />
-          <Property Name="ModeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ModeTypeEnd" Type="Int32" Nullable="false" />
-          <Property Name="StartIdle" Type="Int32" Nullable="false" />
-          <Property Name="LossCodeEnteredTime" Type="DateTime" Precision="3" />
-          <Property Name="LossCodeEnteredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsInserted" Type="Int32" Nullable="false" />
-          <Property Name="IsPiWeb" Type="Int32" />
-          <Property Name="Sync" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbllossescode" Relationship="unitworksccsModel.FK_tblmode_tblbreakdown" FromRole="tblmode" ToRole="tbllossescode" />
-          <NavigationProperty Name="tbllossescode1" Relationship="unitworksccsModel.FK_tblmode_tbllossescodes" FromRole="tblmode" ToRole="tbllossescode" />
-          <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.FK_tblmode_tblmachinedetails" FromRole="tblmode" ToRole="tblmachinedetail" />
-        </EntityType>
-        <Association Name="FK_tblmode_tblbreakdown">
-          <End Type="unitworksccsModel.tbllossescode" Role="tbllossescode" Multiplicity="0..1" />
-          <End Type="unitworksccsModel.tblmode" Role="tblmode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbllossescode">
-              <PropertyRef Name="LossCodeID" />
-            </Principal>
-            <Dependent Role="tblmode">
-              <PropertyRef Name="BreakdownID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblmode_tbllossescodes">
-          <End Type="unitworksccsModel.tbllossescode" Role="tbllossescode" Multiplicity="0..1" />
-          <End Type="unitworksccsModel.tblmode" Role="tblmode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbllossescode">
-              <PropertyRef Name="LossCodeID" />
-            </Principal>
-            <Dependent Role="tblmode">
-              <PropertyRef Name="LossCodeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblmode_tblmachinedetails">
-          <End Type="unitworksccsModel.tblmachinedetail" Role="tblmachinedetail" Multiplicity="1" />
-          <End Type="unitworksccsModel.tblmode" Role="tblmode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblmachinedetail">
-              <PropertyRef Name="MachineID" />
-            </Principal>
-            <Dependent Role="tblmode">
-              <PropertyRef Name="MachineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="tblPrecentColour">
           <Key>
             <PropertyRef Name="ColourID" />
@@ -9350,6 +9225,81 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
         </EntityType>
+        <EntityType Name="configuration_tblprimitivemaintainancescheduling">
+          <Key>
+            <PropertyRef Name="pmid" />
+          </Key>
+          <Property Name="pmid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineID" Type="Int32" Nullable="false" />
+          <Property Name="MachineName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Week" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="CellName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CellID" Type="Int32" Nullable="false" />
+          <Property Name="PlantID" Type="Int32" />
+          <Property Name="ShopID" Type="Int32" />
+          <Property Name="plantName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="shopname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="WeekID" Type="Int32" Nullable="false" />
+          <Property Name="MonthID" Type="Int32" />
+          <NavigationProperty Name="tblcell" Relationship="unitworksccsModel.cellid_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblcell" />
+          <NavigationProperty Name="tblmachinedetail" Relationship="unitworksccsModel.machineID_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblmachinedetail" />
+          <NavigationProperty Name="tblplant" Relationship="unitworksccsModel.PlantID_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblplant" />
+          <NavigationProperty Name="tblshop" Relationship="unitworksccsModel.ShopID_tblprimitivemaintainancescheduling2223" FromRole="configuration_tblprimitivemaintainancescheduling" ToRole="tblshop" />
+        </EntityType>
+        <Association Name="cellid_tblprimitivemaintainancescheduling2223">
+          <End Type="unitworksccsModel.tblcell" Role="tblcell" Multiplicity="1" />
+          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblcell">
+              <PropertyRef Name="CellID" />
+            </Principal>
+            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
+              <PropertyRef Name="CellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="machineID_tblprimitivemaintainancescheduling2223">
+          <End Type="unitworksccsModel.tblmachinedetail" Role="tblmachinedetail" Multiplicity="1" />
+          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmachinedetail">
+              <PropertyRef Name="MachineID" />
+            </Principal>
+            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
+              <PropertyRef Name="MachineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlantID_tblprimitivemaintainancescheduling2223">
+          <End Type="unitworksccsModel.tblplant" Role="tblplant" Multiplicity="0..1" />
+          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblplant">
+              <PropertyRef Name="PlantID" />
+            </Principal>
+            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
+              <PropertyRef Name="PlantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ShopID_tblprimitivemaintainancescheduling2223">
+          <End Type="unitworksccsModel.tblshop" Role="tblshop" Multiplicity="0..1" />
+          <End Type="unitworksccsModel.configuration_tblprimitivemaintainancescheduling" Role="configuration_tblprimitivemaintainancescheduling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblshop">
+              <PropertyRef Name="ShopID" />
+            </Principal>
+            <Dependent Role="configuration_tblprimitivemaintainancescheduling">
+              <PropertyRef Name="ShopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10582,37 +10532,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbllivemodes">
-            <EntityTypeMapping TypeName="unitworksccsModel.tbllivemode">
-              <MappingFragment StoreEntitySet="tbllivemode">
-                <ScalarProperty Name="IsShiftEnd" ColumnName="IsShiftEnd" />
-                <ScalarProperty Name="ModeID" ColumnName="ModeID" />
-                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
-                <ScalarProperty Name="MacMode" ColumnName="MacMode" />
-                <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
-                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
-                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
-                <ScalarProperty Name="DurationInSec" ColumnName="DurationInSec" />
-                <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
-                <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
-                <ScalarProperty Name="ModeType" ColumnName="ModeType" />
-                <ScalarProperty Name="ModeTypeEnd" ColumnName="ModeTypeEnd" />
-                <ScalarProperty Name="StartIdle" ColumnName="StartIdle" />
-                <ScalarProperty Name="LossCodeEnteredTime" ColumnName="LossCodeEnteredTime" />
-                <ScalarProperty Name="LossCodeEnteredBy" ColumnName="LossCodeEnteredBy" />
-                <ScalarProperty Name="IsInserted" ColumnName="IsInserted" />
-                <ScalarProperty Name="TotalPartsCount" ColumnName="TotalPartsCount" />
-                <ScalarProperty Name="CuttingDuration" ColumnName="CuttingDuration" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbllossescodes">
             <EntityTypeMapping TypeName="unitworksccsModel.tbllossescode">
               <MappingFragment StoreEntitySet="tbllossescodes">
@@ -11769,30 +11688,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="configuration_tblprimitivemaintainancescheduling">
-            <EntityTypeMapping TypeName="unitworksccsModel.configuration_tblprimitivemaintainancescheduling">
-              <MappingFragment StoreEntitySet="configuration_tblprimitivemaintainancescheduling">
-                <ScalarProperty Name="MonthID" ColumnName="MonthID" />
-                <ScalarProperty Name="WeekID" ColumnName="WeekID" />
-                <ScalarProperty Name="shopname" ColumnName="shopname" />
-                <ScalarProperty Name="plantName" ColumnName="plantName" />
-                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
-                <ScalarProperty Name="PlantID" ColumnName="PlantID" />
-                <ScalarProperty Name="CellID" ColumnName="CellID" />
-                <ScalarProperty Name="CellName" ColumnName="CellName" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Week" ColumnName="Week" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
-                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
-                <ScalarProperty Name="pmid" ColumnName="pmid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblBreakdowncodes">
             <EntityTypeMapping TypeName="unitworksccsModel.tblBreakdowncode">
               <MappingFragment StoreEntitySet="tblBreakdowncodes">
@@ -11848,28 +11743,34 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblmaintainanceProdBrDetails">
-            <EntityTypeMapping TypeName="unitworksccsModel.tblmaintainanceProdBrDetail">
-              <MappingFragment StoreEntitySet="tblmaintainanceProdBrDetails">
-                <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
-                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
-                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
-                <ScalarProperty Name="createdOn" ColumnName="createdOn" />
-                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-                <ScalarProperty Name="rejectReason" ColumnName="rejectReason" />
-                <ScalarProperty Name="closureTime" ColumnName="closureTime" />
-                <ScalarProperty Name="acceptanceTime" ColumnName="acceptanceTime" />
-                <ScalarProperty Name="productionStatus" ColumnName="productionStatus" />
-                <ScalarProperty Name="maintainanceStatus" ColumnName="maintainanceStatus" />
-                <ScalarProperty Name="productionRemarks" ColumnName="productionRemarks" />
-                <ScalarProperty Name="maintainanceRemarks" ColumnName="maintainanceRemarks" />
-                <ScalarProperty Name="breakdownReasonDateTime" ColumnName="breakdownReasonDateTime" />
-                <ScalarProperty Name="maintainanceOperatorName" ColumnName="maintainanceOperatorName" />
-                <ScalarProperty Name="operatorName" ColumnName="operatorName" />
-                <ScalarProperty Name="reasonName" ColumnName="reasonName" />
-                <ScalarProperty Name="machineName" ColumnName="machineName" />
-                <ScalarProperty Name="roleId" ColumnName="roleId" />
-                <ScalarProperty Name="id" ColumnName="id" />
+          <EntitySetMapping Name="tbllivemodes">
+            <EntityTypeMapping TypeName="unitworksccsModel.tbllivemode">
+              <MappingFragment StoreEntitySet="tbllivemode">
+                <ScalarProperty Name="IsShiftEnd" ColumnName="IsShiftEnd" />
+                <ScalarProperty Name="CuttingDuration" ColumnName="CuttingDuration" />
+                <ScalarProperty Name="TotalPartsCount" ColumnName="TotalPartsCount" />
+                <ScalarProperty Name="IsInserted" ColumnName="IsInserted" />
+                <ScalarProperty Name="LossCodeEnteredBy" ColumnName="LossCodeEnteredBy" />
+                <ScalarProperty Name="LossCodeEnteredTime" ColumnName="LossCodeEnteredTime" />
+                <ScalarProperty Name="StartIdle" ColumnName="StartIdle" />
+                <ScalarProperty Name="ModeTypeEnd" ColumnName="ModeTypeEnd" />
+                <ScalarProperty Name="ModeType" ColumnName="ModeType" />
+                <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+                <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+                <ScalarProperty Name="DurationInSec" ColumnName="DurationInSec" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+                <ScalarProperty Name="MacMode" ColumnName="MacMode" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="ModeID" ColumnName="ModeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11931,29 +11832,6 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblpartscountandcuttings">
-            <EntityTypeMapping TypeName="unitworksccsModel.tblpartscountandcutting">
-              <MappingFragment StoreEntitySet="tblpartscountandcutting">
-                <ScalarProperty Name="CuttingTimeInSec" ColumnName="CuttingTimeInSec" />
-                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
-                <ScalarProperty Name="WoPartCount" ColumnName="WoPartCount" />
-                <ScalarProperty Name="PartsPerCyscleEnteredTime" ColumnName="PartsPerCyscleEnteredTime" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="TargetQuantity" ColumnName="TargetQuantity" />
-                <ScalarProperty Name="CuttingTime" ColumnName="CuttingTime" />
-                <ScalarProperty Name="PartCount" ColumnName="PartCount" />
-                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
-                <ScalarProperty Name="pcid" ColumnName="pcid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblmodes">
             <EntityTypeMapping TypeName="unitworksccsModel.tblmode">
               <MappingFragment StoreEntitySet="tblmode">
@@ -11984,6 +11862,29 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblpartscountandcuttings">
+            <EntityTypeMapping TypeName="unitworksccsModel.tblpartscountandcutting">
+              <MappingFragment StoreEntitySet="tblpartscountandcutting">
+                <ScalarProperty Name="CuttingTimeInSec" ColumnName="CuttingTimeInSec" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="WoPartCount" ColumnName="WoPartCount" />
+                <ScalarProperty Name="PartsPerCyscleEnteredTime" ColumnName="PartsPerCyscleEnteredTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="TargetQuantity" ColumnName="TargetQuantity" />
+                <ScalarProperty Name="CuttingTime" ColumnName="CuttingTime" />
+                <ScalarProperty Name="PartCount" ColumnName="PartCount" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="pcid" ColumnName="pcid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblPrecentColours">
             <EntityTypeMapping TypeName="unitworksccsModel.tblPrecentColour">
               <MappingFragment StoreEntitySet="tblPrecentColour">
@@ -11994,6 +11895,30 @@ warning 6002: The table/view 'unitworksccs.unitworkccs.tblAndonDisplayRotate' do
                 <ScalarProperty Name="Min" ColumnName="Min" />
                 <ScalarProperty Name="Colour" ColumnName="Colour" />
                 <ScalarProperty Name="ColourID" ColumnName="ColourID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configuration_tblprimitivemaintainancescheduling">
+            <EntityTypeMapping TypeName="unitworksccsModel.configuration_tblprimitivemaintainancescheduling">
+              <MappingFragment StoreEntitySet="configuration_tblprimitivemaintainancescheduling">
+                <ScalarProperty Name="MonthID" ColumnName="MonthID" />
+                <ScalarProperty Name="WeekID" ColumnName="WeekID" />
+                <ScalarProperty Name="shopname" ColumnName="shopname" />
+                <ScalarProperty Name="plantName" ColumnName="plantName" />
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+                <ScalarProperty Name="CellID" ColumnName="CellID" />
+                <ScalarProperty Name="CellName" ColumnName="CellName" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="pmid" ColumnName="pmid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

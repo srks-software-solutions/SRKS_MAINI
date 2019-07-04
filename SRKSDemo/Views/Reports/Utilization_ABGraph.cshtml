@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Utilization_ABGraph";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,7 +14,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            @using (Html.BeginForm("Utilization", "Reports", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Utilization_ABGraph", "Reports", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
             {
                 <div class="row">
                     <div class="col-sm-12">
@@ -34,8 +35,8 @@
                             <div class="col-sm-new-3">
                                 @Html.DropDownList("MachineID", null, "--Select Machine--", new { @id = "MachineID", @class = "form-control", @tabindex = "2", @name = "MachineID", @value = ViewData["MachineID"] })
                             </div>
+                            </div>
                         </div>
-                    </div>
                     <div>
                         <div>
                             <label class="control-label1 col-md-2 col-sm-3 col-xs-12" style="display:none;">Start Date</label>
@@ -93,9 +94,9 @@
     });
 </script>
 @*<script type="text/javascript">
-        /* Timepicker */
-        $('.myDatepicker3').datetimepicker({ format: 'hh:mm A' });
-    </script>*@
+    /* Timepicker */
+    $('.myDatepicker3').datetimepicker({ format: 'hh:mm A' });
+</script>*@
 <script type="text/javascript">
     $('.myDatepicker4').datetimepicker({
         format: 'YYYY-MM-DD',

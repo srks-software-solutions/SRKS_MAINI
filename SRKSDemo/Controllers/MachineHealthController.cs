@@ -122,7 +122,7 @@ namespace SRKSDemo.Controllers
             string res = " ";
             //string corrected = GetCorrectedDate();
             //var corrected = Convert.ToDateTime(corrected);
-            string corrected = "2019-03-19";
+            string corrected = "2019-05-20";
            // var correcteddate = Convert.ToDateTime(corrected);
             List<MachineHealth> machineHealthList = new List<MachineHealth>();
             MachineHealth objmahchinehealth = new MachineHealth();

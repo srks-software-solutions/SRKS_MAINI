@@ -17,8 +17,8 @@ namespace SRKSDemo.Server_Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblbreakdown()
         {
-            this.tbllivemodes = new HashSet<tbllivemode>();
             this.tblmodetemps = new HashSet<tblmodetemp>();
+            this.tbllivemodes = new HashSet<tbllivemode>();
         }
     
         public int BreakdownID { get; set; }
@@ -33,9 +33,9 @@ namespace SRKSDemo.Server_Model
         public Nullable<int> DoneWithRow { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbllivemode> tbllivemodes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblmodetemp> tblmodetemps { get; set; }
         public virtual tbllossescode tbllossescode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbllivemode> tbllivemodes { get; set; }
     }
 }

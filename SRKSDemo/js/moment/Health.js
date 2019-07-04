@@ -4,7 +4,7 @@
     var ChartDet3 = GetChartDet('chartdiv3');
     GetData();
 
-    //setInterval(GetData, 3000);
+    setInterval(GetData, 3000);
     function GetChartDet(divid) {
         var chart = AmCharts.makeChart(divid, {
             "type": "serial",

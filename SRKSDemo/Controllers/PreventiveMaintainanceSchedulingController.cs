@@ -380,7 +380,7 @@ namespace SRKSDemo.Controllers
             cp.IsDeleted = 0;
             var monthdata = condb.monthdatas.Where(m => m.MonthID == monthValue).Select(m => m.Text).FirstOrDefault();
             cp.Month = monthdata;
-            
+
             cp.MonthID = monthValue;
             cp.Week = weekvalue;
             condb.configuration_tblprimitivemaintainancescheduling.Add(cp);

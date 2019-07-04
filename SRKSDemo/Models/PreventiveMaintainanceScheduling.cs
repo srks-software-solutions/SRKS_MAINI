@@ -24,7 +24,7 @@ namespace SRKSDemo.Models
     {
         public int pmid { get; set; }
         public int MachineID { get; set; }
-        public string Month { get; set; }
+        public int Month { get; set; }
         public int Week { get; set; }
         public string MachineName { get; set; }
         public int CreatedBy { get; set; }

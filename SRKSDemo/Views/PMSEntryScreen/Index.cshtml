@@ -202,40 +202,34 @@
                 var result = msg;
                 var cssdata = "";
                 res1 = msg;
-                if (result.length != 0) {
-                    for (var i = 0; i < result.length; i++) {
-                        cssdata += '<button class="collapsible" name="' + i + '" data-toggle="collapse" style="font-size:18px;font-style:normal" data-target="#collapseid_' + i + '" id="gene_' + result[i].checkpointid + '" onclick="collapfun(this.name,' + result[i].checkpointid + ');">' + result[i].checkpointname + '</button>';
-                        var resdata = result[i].checklistdata;
-                        res2 = resdata;
-                        var cssdata1 = "";
-                        cssdata1 = '<div class="collapse" id="collapseid_' + i + '">';
-                        for (var j = 0; j < resdata.length; j++) {
-                            cssdata1 += '<div class="row check id="' + i + '_' + j + '"><div class="col-sm-2"><label class="checklist1_' + i + '_' + j + '" id="check_' + i + '_' + j + '">' + resdata[j].checklistname + '</label></div>';
-                            cssdata1 += '<div class="col-sm-2"><label id="freq_' + i + '_' + j + '">' + resdata[j].Frequency + '</label></div>';
-                            cssdata1 += '<div class="col-sm-2"><label id="val_' + i + '_' + j + '">' + resdata[j].Value + '</label></div>';
-                            cssdata1 += '<div class="col-sm-2"><label id="how_' + i + '_' + j + '">' + resdata[j].How + '</label></div>';
-                            cssdata1 += '<div class="col-sm-2"><label>Workdone</label><select class="form-control work" style="color: black;border-color: black;" name="' + i + '_' + j + '" id ="isbottelneck_' + i + '_' + j + '"><option id="option_' + i + '_' + j + '" value="" selected disabled>--Select--</option><option value="1" class="Yes" id="yes_' + i + '_' + j + '">Yes</option><option value="0" class="No" id="No_' + i + '_' + j + '">No</option></select></div>';
-                            cssdata1 += '<div class="col-sm-2"><label>Remarks</label><input type="text" style="color: black;border-color: black;" name = "' + i + '_' + j + '" class="form-control Remarks" id="Remarks_' + i + '_' + j + '" placeholder="Enter Remarks"/></div></div>';
-                        }
-                        count = resdata.length;
-                        cssdata1 += '<button type="submit" id="btnSave_' + i + '" name="' + i + '" class="btn btn-new float-right btnSave" onclick="save(' + count + ',this.name);"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>';
-                        cssdata1 += '</div>';
-                        cssdata += cssdata1;
-                    }
 
-                    $('#app').append(cssdata);
-                    $('.btnSave').hide();
-                    $('.submit').show();
-                    $(".work").each(function () {
-                        var g = $(this).attr('name');
-                        checklist.push(g);
-                    });
+                for (var i = 0; i < result.length; i++) {
+                    cssdata += '<button class="collapsible" name="' + i + '" data-toggle="collapse" style="font-size:18px;font-style:normal" data-target="#collapseid_' + i + '" id="gene_' + result[i].checkpointid + '" onclick="collapfun(this.name,' + result[i].checkpointid + ');">' + result[i].checkpointname + '</button>';
+                    var resdata = result[i].checklistdata;
+                    res2 = resdata;
+                    var cssdata1 = "";
+                    cssdata1 = '<div class="collapse" id="collapseid_' + i + '">';
+                    for (var j = 0; j < resdata.length; j++) {
+                        cssdata1 += '<div class="row check id="' + i + '_' + j + '"><div class="col-sm-2"><label class="checklist1_' + i + '_' + j + '" id="check_' + i + '_' + j + '">' + resdata[j].checklistname + '</label></div>';
+                        cssdata1 += '<div class="col-sm-2"><label id="freq_' + i + '_' + j + '">' + resdata[j].Frequency + '</label></div>';
+                        cssdata1 += '<div class="col-sm-2"><label id="val_' + i + '_' + j + '">' + resdata[j].Value + '</label></div>';
+                        cssdata1 += '<div class="col-sm-2"><label id="how_' + i + '_' + j + '">' + resdata[j].How + '</label></div>';
+                        cssdata1 += '<div class="col-sm-2"><label>Workdone</label><select class="form-control work" style="color: black;border-color: black;" name="' + i + '_' + j + '" id ="isbottelneck_' + i + '_' + j + '"><option id="option_' + i + '_' + j + '" value="" selected disabled>--Select--</option><option value="1" class="Yes" id="yes_' + i + '_' + j + '">Yes</option><option value="0" class="No" id="No_' + i + '_' + j + '">No</option></select></div>';
+                        cssdata1 += '<div class="col-sm-2"><label>Remarks</label><input type="text" style="color: black;border-color: black;" name = "' + i + '_' + j + '" class="form-control Remarks" id="Remarks_' + i + '_' + j + '" placeholder="Enter Remarks"/></div></div>';
+                    }
+                    count = resdata.length;
+                    cssdata1 += '<button type="submit" id="btnSave_' + i + '" name="' + i + '" class="btn btn-new float-right btnSave" onclick="save(' + count + ',this.name);"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>';
+                    cssdata1 += '</div>';
+                    cssdata += cssdata1;
                 }
-                else {
-                    alert("There is no Checkpoints for this particular Machine");
-                }
+                $('#app').append(cssdata);
+                $('.btnSave').hide();
+                $('.submit').show();
+                $(".work").each(function () {
+                    var g = $(this).attr('name');
+                    checklist.push(g);
+                });
             }
-           
         });
 
 
@@ -372,7 +366,7 @@
     }
 
     $(document).on("click", ".btnSubmit", function (e) {
-        var Enddate = $("#ToDate").val();
+        var Enddate = $("#Enddate").val();
         $.post("/PMSEntryScreen/Setfalg", { Enddate: Enddate }, function (res) {
             if (res == "Success") {
                 alert("All the records submitted");

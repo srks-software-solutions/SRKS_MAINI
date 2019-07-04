@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\SRKS\Projects\2019\Demos\Maini Auto\i_facility</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Ashok\MAINIDEMO\20190704\publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AndonImages/161bc47b-02c3-4106-87dc-b2a386a3d1bd.png">
@@ -31,10 +31,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/18/2019 08:36:08</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>06/24/2019 14:55:05</publishTime>
+      <publishTime>07/04/2019 16:49:08</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>06/24/2019 14:55:05</publishTime>
+      <publishTime>07/04/2019 16:49:08</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.pdb">
+      <publishTime>07/04/2019 16:49:08</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/07/2018 11:03:48</publishTime>
@@ -85,7 +88,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>02/18/2018 09:44:54</publishTime>
+      <publishTime>04/22/2019 01:06:16</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -166,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:22</publishTime>
     </File>
     <File Include="bin/SRKSDemo.dll">
-      <publishTime>06/24/2019 14:52:42</publishTime>
+      <publishTime>07/04/2019 16:48:01</publishTime>
     </File>
     <File Include="bin/SRKSDemo.pdb">
-      <publishTime>06/24/2019 14:52:42</publishTime>
+      <publishTime>07/04/2019 16:48:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
       <publishTime>07/19/2017 10:01:30</publishTime>
@@ -612,6 +615,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="js/bootstrap.min.js">
       <publishTime>08/05/2017 06:08:30</publishTime>
     </File>
+    <File Include="js/bootstrap4.js">
+      <publishTime>06/28/2019 17:46:55</publishTime>
+    </File>
     <File Include="js/canvasjs.min.js">
       <publishTime>05/15/2019 12:17:02</publishTime>
     </File>
@@ -660,6 +666,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="js/jquery-2.1.4.min.js">
       <publishTime>08/05/2017 06:08:30</publishTime>
     </File>
+    <File Include="js/jquery-3.1.1.min.js">
+      <publishTime>06/26/2019 17:33:08</publishTime>
+    </File>
     <File Include="js/jquery-core.js">
       <publishTime>02/28/2018 12:01:00</publishTime>
     </File>
@@ -699,11 +708,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="js/jquery.hashchange.min.js">
       <publishTime>08/05/2017 06:08:30</publishTime>
     </File>
+    <File Include="js/jquery.min.js">
+      <publishTime>06/26/2019 17:54:03</publishTime>
+    </File>
     <File Include="js/jquery.sparkline.min.js">
       <publishTime>08/05/2017 06:08:30</publishTime>
     </File>
     <File Include="js/jquery.timepicker.min.js">
       <publishTime>08/05/2017 06:08:30</publishTime>
+    </File>
+    <File Include="js/jquery321.min.js">
+      <publishTime>06/28/2019 17:47:52</publishTime>
     </File>
     <File Include="js/jValidation2.js">
       <publishTime>08/23/2017 13:28:48</publishTime>
@@ -741,8 +756,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="js/moment/moment.min.js">
       <publishTime>08/05/2017 06:08:32</publishTime>
     </File>
+    <File Include="js/moment/operatormodule.js">
+      <publishTime>06/28/2019 17:34:05</publishTime>
+    </File>
     <File Include="js/moment/PMS.js">
-      <publishTime>06/19/2019 12:52:42</publishTime>
+      <publishTime>07/04/2019 15:40:38</publishTime>
     </File>
     <File Include="js/moment/serial.js">
       <publishTime>05/14/2019 10:37:56</publishTime>
@@ -774,8 +792,194 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Newdashboardjs/jquery.min.js">
       <publishTime>05/15/2019 12:15:31</publishTime>
     </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-grid.css">
+      <publishTime>01/18/2018 22:03:20</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-grid.css.map">
+      <publishTime>01/18/2018 22:03:20</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-grid.min.css">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-grid.min.css.map">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-reboot.css">
+      <publishTime>01/18/2018 22:03:20</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-reboot.css.map">
+      <publishTime>01/18/2018 22:03:20</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-reboot.min.css">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap-reboot.min.css.map">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap.css">
+      <publishTime>06/14/2019 15:30:56</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap.css.map">
+      <publishTime>01/18/2018 22:03:21</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap.min.css">
+      <publishTime>01/18/2018 22:03:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/bootstrap.min.css.map">
+      <publishTime>01/18/2018 22:03:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/custom.css">
+      <publishTime>06/15/2019 16:15:02</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/css/w3.css">
+      <publishTime>06/25/2019 13:44:19</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.bundle.js">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.bundle.js.map">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.bundle.min.js">
+      <publishTime>01/18/2018 22:03:36</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.bundle.min.js.map">
+      <publishTime>01/18/2018 22:03:36</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.js">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.js.map">
+      <publishTime>01/18/2018 22:03:31</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.min.js">
+      <publishTime>01/18/2018 22:03:36</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/bootstrap.min.js.map">
+      <publishTime>01/18/2018 22:03:36</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/jquery.js">
+      <publishTime>06/17/2019 12:28:15</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/js/loadcanvas.js">
+      <publishTime>06/17/2019 12:04:39</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/loading-bar/loading-bar.css">
+      <publishTime>05/27/2019 11:01:36</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/loading-bar/loading-bar.js">
+      <publishTime>05/27/2019 11:01:38</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/.DS_Store">
+      <publishTime>06/25/2013 11:33:14</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/css/.DS_Store">
+      <publishTime>04/25/2013 17:58:56</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/css/component.css">
+      <publishTime>06/25/2013 11:31:16</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/css/default.css">
+      <publishTime>06/24/2013 10:02:14</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/fonts/.DS_Store">
+      <publishTime>05/07/2013 11:29:54</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/fonts/codropsicons/.DS_Store">
+      <publishTime>05/06/2013 09:46:32</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/fonts/codropsicons/codropsicons.eot">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/fonts/codropsicons/codropsicons.svg">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/fonts/codropsicons/codropsicons.ttf">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/fonts/codropsicons/codropsicons.woff">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/fonts/codropsicons/license.txt">
+      <publishTime>05/02/2013 17:43:52</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/index.html">
+      <publishTime>06/25/2013 11:59:06</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/js/.DS_Store">
+      <publishTime>06/03/2013 23:19:12</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/js/classie.js">
+      <publishTime>05/03/2013 06:02:24</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/js/css-filters-polyfill.js">
+      <publishTime>03/08/2013 01:28:06</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/js/cssParser.js">
+      <publishTime>03/08/2013 01:28:06</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/js/modalEffects.js">
+      <publishTime>06/24/2013 11:15:04</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/js/modernizr.custom.js">
+      <publishTime>04/25/2013 17:32:10</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/ModalWindowEffects/README.md">
+      <publishTime>06/17/2013 14:45:20</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/._.DS_Store">
+      <publishTime>06/25/2013 11:33:14</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/._css">
+      <publishTime>06/24/2013 11:23:12</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/._js">
+      <publishTime>06/17/2013 15:17:14</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/._README.md">
+      <publishTime>06/17/2013 14:45:20</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/css/._.DS_Store">
+      <publishTime>04/25/2013 17:58:56</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/fonts/._.DS_Store">
+      <publishTime>05/07/2013 11:29:54</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/fonts/codropsicons/._.DS_Store">
+      <publishTime>05/06/2013 09:46:32</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/fonts/codropsicons/._codropsicons.eot">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/fonts/codropsicons/._codropsicons.svg">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/fonts/codropsicons/._codropsicons.ttf">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/fonts/codropsicons/._codropsicons.woff">
+      <publishTime>05/06/2013 10:45:30</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/fonts/codropsicons/._license.txt">
+      <publishTime>05/02/2013 17:43:52</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/js/._.DS_Store">
+      <publishTime>06/03/2013 23:19:12</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/js/._classie.js">
+      <publishTime>05/03/2013 06:02:24</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/js/._css-filters-polyfill.js">
+      <publishTime>03/08/2013 01:28:06</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/js/._cssParser.js">
+      <publishTime>03/08/2013 01:28:06</publishTime>
+    </File>
+    <File Include="NewOperatorEntryJS/ModalWindowEffects/__MACOSX/ModalWindowEffects/js/._modernizr.custom.js">
+      <publishTime>04/25/2013 17:32:10</publishTime>
+    </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/24/2019 14:54:51</publishTime>
+      <publishTime>07/04/2019 16:48:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>01/18/2019 17:27:02</publishTime>
@@ -934,7 +1138,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/18/2019 17:27:06</publishTime>
     </File>
     <File Include="Server Model/SRKS.edmx.diagram">
-      <publishTime>06/24/2019 13:22:02</publishTime>
+      <publishTime>07/04/2019 14:41:55</publishTime>
     </File>
     <File Include="vendors/animate.css/.bower.json">
       <publishTime>08/05/2017 07:03:48</publishTime>
@@ -13990,7 +14194,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/18/2019 20:27:40</publishTime>
     </File>
     <File Include="Views/MachineSensor/CreateMachineSensor.cshtml">
-      <publishTime>06/18/2019 18:11:54</publishTime>
+      <publishTime>06/26/2019 16:23:35</publishTime>
     </File>
     <File Include="Views/MachineSensor/EditMachineSensor.cshtml">
       <publishTime>06/19/2019 20:51:14</publishTime>
@@ -14058,6 +14262,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/OperatorEntry/ToolLifeData.cshtml">
       <publishTime>06/18/2019 20:30:12</publishTime>
     </File>
+    <File Include="Views/OperatorEntry1/EntryWindow.cshtml">
+      <publishTime>06/29/2019 02:16:53</publishTime>
+    </File>
     <File Include="Views/OperatorEntryAdmin/EntryWindowAdmin.cshtml">
       <publishTime>06/18/2019 18:11:52</publishTime>
     </File>
@@ -14070,6 +14277,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/OperatorEntryAdmin/ToolLifeDataAdmin.cshtml">
       <publishTime>06/18/2019 18:11:52</publishTime>
     </File>
+    <File Include="Views/OperatorEntryModel/IDLEPopup.cshtml">
+      <publishTime>07/02/2019 13:04:46</publishTime>
+    </File>
+    <File Include="Views/OperatorEntryModel/Index.cshtml">
+      <publishTime>07/04/2019 11:38:49</publishTime>
+    </File>
     <File Include="Views/OperatorEntryScreen/BreakDownEntry.cshtml">
       <publishTime>01/18/2019 17:49:06</publishTime>
     </File>
@@ -14081,6 +14294,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/OperatorEntryScreen/Maintenance.cshtml">
       <publishTime>06/18/2019 18:11:51</publishTime>
+    </File>
+    <File Include="Views/OperatorLoginDetails/CreateOperatorLogin.cshtml">
+      <publishTime>07/04/2019 13:38:04</publishTime>
+    </File>
+    <File Include="Views/OperatorLoginDetails/EditOperatorLogin.cshtml">
+      <publishTime>07/04/2019 13:39:11</publishTime>
+    </File>
+    <File Include="Views/OperatorLoginDetails/Index.cshtml">
+      <publishTime>07/04/2019 13:36:38</publishTime>
     </File>
     <File Include="Views/PartsManagement/Index.cshtml">
       <publishTime>06/18/2019 20:30:25</publishTime>
@@ -14163,6 +14385,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/ProgramTransfer/Index.cshtml">
       <publishTime>02/06/2019 11:49:28</publishTime>
     </File>
+    <File Include="Views/Reports/AlaramReport.cshtml">
+      <publishTime>07/04/2019 15:23:31</publishTime>
+    </File>
     <File Include="Views/Reports/CycleTime.cshtml">
       <publishTime>05/24/2019 11:27:10</publishTime>
     </File>
@@ -14189,6 +14414,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Reports/ToolLife.cshtml.bak">
       <publishTime>02/06/2019 11:49:28</publishTime>
+    </File>
+    <File Include="Views/Reports/Utilization.cshtml">
+      <publishTime>07/02/2019 15:48:12</publishTime>
     </File>
     <File Include="Views/Reports/Utilization_ABGraph.cshtml">
       <publishTime>02/06/2019 13:22:50</publishTime>
@@ -14254,7 +14482,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/19/2019 11:57:01</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/24/2019 11:03:33</publishTime>
+      <publishTime>07/04/2019 13:51:19</publishTime>
     </File>
     <File Include="Views/Shared/_OperatorAdminLayout.cshtml">
       <publishTime>02/06/2019 13:53:10</publishTime>
@@ -14320,7 +14548,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/17/2019 16:41:14</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/24/2019 14:53:01</publishTime>
+      <publishTime>07/04/2019 16:48:22</publishTime>
     </File>
   </ItemGroup>
 </Project>

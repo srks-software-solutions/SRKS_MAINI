@@ -34,8 +34,8 @@ namespace SRKSDemo.Server_Model
         public Nullable<int> MonthID { get; set; }
     
         public virtual tblcell tblcell { get; set; }
+        public virtual tblmachinedetail tblmachinedetail { get; set; }
         public virtual tblplant tblplant { get; set; }
         public virtual tblshop tblshop { get; set; }
-        public virtual tblmachinedetail tblmachinedetail { get; set; }
     }
 }

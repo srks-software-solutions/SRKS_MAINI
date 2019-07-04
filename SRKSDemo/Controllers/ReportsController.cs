@@ -219,6 +219,7 @@ namespace SRKSDemo.Controllers
                         Obj.CTTime = SumCuttingtime;
                         Obj.OPTime = SumOperatingtime;
                         Obj.POTime = SumPowerOntime;
+                        Obj.MachineID = MachID;
                         ShiftList.Add(Obj);
 
                         Col++;
@@ -238,68 +239,174 @@ namespace SRKSDemo.Controllers
             int dayDiff = dateDifference + 1;
 
             //summerized data display
-            if (UtilSummerizedList != null)
+            //var MachDet = Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0).ToList();
+            foreach (var MachID in getMachineList)
             {
-                foreach (var row in UtilSummerizedList)
+                int Machineid = MachID.MachineID;
+                if (UtilSummerizedList != null)
                 {
-                    worksheetSum.Cells["A" + StartRow].Value = SlNo++;
-                    worksheetSum.Cells["B" + StartRow].Value = row.PlantName;
-                    worksheetSum.Cells["C" + StartRow].Value = row.ShopName;
-                    worksheetSum.Cells["D" + StartRow].Value = row.CellName;
-                    worksheetSum.Cells["E" + StartRow].Value = row.MachineName;
-                    worksheetSum.Cells["F" + StartRow].Value = row.DateTime;
-
-                    var ListShiftVal = row.ShiftDoubleVal;
-                    foreach (var ShiftRow in ListShiftVal)
+                    foreach (var row in UtilSummerizedList)
                     {
-                        string ColumnNumber = ExcelColumnFromNumber(Cols);
+                        worksheetSum.Cells["A" + StartRow].Value = SlNo++;
+                        worksheetSum.Cells["B" + StartRow].Value = row.PlantName;
+                        worksheetSum.Cells["C" + StartRow].Value = row.ShopName;
+                        worksheetSum.Cells["D" + StartRow].Value = row.CellName;
+                        worksheetSum.Cells["E" + StartRow].Value = row.MachineName;
+                        worksheetSum.Cells["F" + StartRow].Value = row.DateTime;
 
-                        var PrecentColourDet = Serverdb.tblPrecentColours.Where(m => m.IsDeleted == 0).ToList();
-                        foreach (var ColourRow in PrecentColourDet)
+                        var ListShiftVal = row.ShiftDoubleVal;
+                        foreach (var ShiftRow in ListShiftVal)
                         {
-                            double MinVal = Convert.ToDouble(ColourRow.Min);
-                            double MaxVal = Convert.ToDouble(ColourRow.Max);
-                            string Colour = ColourRow.Colour;
-
-                            if (ShiftRow.POTime >= MinVal && ShiftRow.POTime < MaxVal)
+                            int MID = ShiftRow.MachineID;
+                            if (MID == Machineid)
                             {
-                                worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                                worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
-                                worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round((ShiftRow.POTime) / dayDiff, 2);
-                                Cols++;
-                                ColumnNumber = ExcelColumnFromNumber(Cols);
+                                string ColumnNumber = ExcelColumnFromNumber(Cols);
 
-                            }
-                            if (ShiftRow.OPTime >= MinVal && ShiftRow.OPTime < MaxVal)
-                            {
-                                worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                                worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
-                                worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round((ShiftRow.OPTime) / dayDiff, 2);
-                                Cols++;
-                                ColumnNumber = ExcelColumnFromNumber(Cols);
-                            }
-                            if (ShiftRow.CTTime >= MinVal && ShiftRow.CTTime < MaxVal)
-                            {
-                                worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                                worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
-                                worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round((ShiftRow.CTTime) / dayDiff, 2);
-                                Cols++;
-                            }
+                                var PrecentColourDet = Serverdb.tblPrecentColours.Where(m => m.IsDeleted == 0).ToList();
+                                foreach (var ColourRow in PrecentColourDet)
+                                {
+                                    double MinVal = Convert.ToDouble(ColourRow.Min);
+                                    double MaxVal = Convert.ToDouble(ColourRow.Max);
+                                    string Colour = ColourRow.Colour;
 
+                                    if (ShiftRow.POTime >= MinVal && ShiftRow.POTime < MaxVal)
+                                    {
+                                        try
+                                        {
+                                            double POTIME = 0;
+                                            var POTIMEFinal = worksheetSum.Cells[ColumnNumber + StartRow].Value;
+                                            if (POTIMEFinal.ToString() == "")
+                                            {
+                                                POTIME = POTIME + ShiftRow.POTime;
+                                            }
+                                            else
+                                            {
+                                                POTIME = Convert.ToDouble(POTIMEFinal);
+                                                POTIME = POTIME + ShiftRow.POTime;
+                                            }
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(POTIME, 2);
+                                            //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round((ShiftRow.POTime) / dayDiff, 2);
+                                            Cols++;
+                                            ColumnNumber = ExcelColumnFromNumber(Cols);
+                                        }
+                                        catch(Exception ex)
+                                        {
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.POTime, 2);
+                                            Cols++;
+                                            ColumnNumber = ExcelColumnFromNumber(Cols);
+                                        }
+                                       
+
+                                    }
+                                    if (ShiftRow.OPTime >= MinVal && ShiftRow.OPTime < MaxVal)
+                                    {
+                                        try
+                                        {
+                                            double OPTIME = 0;
+                                            var OPTIMEFinal = worksheetSum.Cells[ColumnNumber + StartRow].Value;
+                                            if (OPTIMEFinal.ToString() == "")
+                                            {
+                                                OPTIME = OPTIME + ShiftRow.POTime;
+                                            }
+                                            else
+                                            {
+                                                OPTIME = Convert.ToDouble(OPTIMEFinal);
+                                                OPTIME = OPTIME + ShiftRow.POTime;
+                                            }
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(OPTIME, 2);
+                                            //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round((ShiftRow.OPTime) / dayDiff, 2);
+                                            Cols++;
+                                            ColumnNumber = ExcelColumnFromNumber(Cols);
+                                        }
+                                        catch(Exception ex)
+                                        {
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.OPTime, 2);
+                                            Cols++;
+                                            ColumnNumber = ExcelColumnFromNumber(Cols);
+                                        }
+                                    }
+                                    if (ShiftRow.CTTime >= MinVal && ShiftRow.CTTime < MaxVal)
+                                    {
+                                        try
+                                        {
+                                            double CTTIME = 0;
+                                            var CTTIMEFinal = worksheetSum.Cells[ColumnNumber + StartRow].Value;
+                                            if (CTTIMEFinal.ToString() == "")
+                                            {
+                                                CTTIME = CTTIME + ShiftRow.POTime;
+                                            }
+                                            else
+                                            {
+                                                CTTIME = Convert.ToDouble(CTTIMEFinal);
+                                                CTTIME = CTTIME + ShiftRow.POTime;
+                                            }
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(CTTIME, 2);
+                                            //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round((ShiftRow.CTTime) / dayDiff, 2);
+                                            Cols++;
+                                        }
+                                        catch(Exception ex)
+                                        {
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                                            worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.CTTime, 2);
+                                            Cols++;
+                                        }
+                                    }
+
+                                }
+                                //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.POTime,2);
+                                //Cols++;
+                                //ColumnNumber = ExcelColumnFromNumber(Cols);
+                                //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.OPTime,2);
+                                //Cols++;
+                                //ColumnNumber = ExcelColumnFromNumber(Cols);
+                                //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.CTTime,2);
+                                //Cols++;
+                            }
                         }
-                        //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.POTime,2);
-                        //Cols++;
-                        //ColumnNumber = ExcelColumnFromNumber(Cols);
-                        //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.OPTime,2);
-                        //Cols++;
-                        //ColumnNumber = ExcelColumnFromNumber(Cols);
-                        //worksheetSum.Cells[ColumnNumber + StartRow].Value = Math.Round(ShiftRow.CTTime,2);
-                        //Cols++;
+                        Cols = 7;
                     }
                     Cols = 7;
                     StartRow++;
                 }
             }
+
+            // after storing the data in excel divide by difference day
+            int SR = 4;
+            int Coln = 7;
+            var MaDet = Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0).ToList();
+            foreach(var r in MaDet)
+            {
+                int ShiftCount = Serverdb.tblshift_mstr.Where(m => m.IsDeleted == 0).Count();
+                ShiftCount = ShiftCount * 3;
+                string ColumnNameSt = ExcelColumnFromNumber(Coln);
+                for (int i=0;i<ShiftCount;i++)
+                {
+                    ColumnNameSt = ExcelColumnFromNumber(Coln);
+                    var CTTIMEFinal = worksheetSum.Cells[ColumnNameSt + SR].Value;
+                    if(CTTIMEFinal!=null)
+                    {
+                        double Values = Convert.ToDouble(CTTIMEFinal);
+                        Values = Values / dayDiff;
+                        worksheetSum.Cells[ColumnNameSt + SR].Value = Math.Round(Values, 2);
+                        Coln++;
+                    }
+                }
+                Coln = 7;
+                SR++;
+            }
+
+
 
             int Srow = StartRow - 1;
             // last row disaply in summerized
@@ -316,27 +423,28 @@ namespace SRKSDemo.Controllers
             worksheetSum.Cells["O" + StartRow].Formula = "SUM(O4:O" + Srow + ")";
 
             //  precentage and colour display
-            StartRow += 2;
-            int cno = 3;
+            int srt = 2;
+            int cno = 17;
             var PrecentColourDet1 = Serverdb.tblPrecentColours.Where(m => m.IsDeleted == 0).ToList();
             string ColumnNumberS = "";
             ColumnNumberS = ExcelColumnFromNumber(cno);
-            worksheet.Cells[ColumnNumberS + StartRow].Value = "Values are in Precentage";
+            worksheet.Cells[ColumnNumberS + srt].Value = "Values are in Precentage";
             ColumnNumberS = ExcelColumnFromNumber(cno);
-            worksheetSum.Cells[ColumnNumberS + StartRow].Value = "Values are in Precentage";
+            worksheetSum.Cells[ColumnNumberS + srt].Value = "Values are in Precentage";
             cno++;
+            srt++;
             foreach (var ColourRow in PrecentColourDet1)
             {
                 ColumnNumberS = ExcelColumnFromNumber(cno);
                 double MinVal = Convert.ToDouble(ColourRow.Min);
                 double MaxVal = Convert.ToDouble(ColourRow.Max);
                 string Colour = ColourRow.Colour;
-                worksheet.Cells[ColumnNumberS + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                worksheet.Cells[ColumnNumberS + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
-                worksheet.Cells[ColumnNumberS + StartRow].Value = ">=" + MinVal + "%" + "<" + MaxVal + "%" + Colour;
-                worksheetSum.Cells[ColumnNumberS + StartRow].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                worksheetSum.Cells[ColumnNumberS + StartRow].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
-                worksheetSum.Cells[ColumnNumberS + StartRow].Value = ">=" + MinVal + "%" + "<" + MaxVal + "%" + Colour;
+                worksheet.Cells[ColumnNumberS + srt].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells[ColumnNumberS + srt].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                worksheet.Cells[ColumnNumberS + srt].Value = ">=" + MinVal + "%" + "<" + MaxVal + "%" + Colour;
+                worksheetSum.Cells[ColumnNumberS + srt].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheetSum.Cells[ColumnNumberS + srt].Style.Fill.BackgroundColor.SetColor(ReturnColour(Colour));
+                worksheetSum.Cells[ColumnNumberS + srt].Value = ">=" + MinVal + "%" + "<" + MaxVal + "%" + Colour;
                 cno++;
             }
 
@@ -3125,6 +3233,254 @@ namespace SRKSDemo.Controllers
                 ViewData["MachineID"] = new SelectList(Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0 && m.PlantID == 999), "MachineID", "MachineDisplayName", machineid);
             }
             return View();
+        }
+
+        public ActionResult AlaramReport()
+        {
+            if ((Session["UserId"] == null) || (Session["UserId"].ToString() == String.Empty))
+            {
+                return RedirectToAction("Login", "Login", null);
+            }
+            ViewBag.Logout = Session["Username"];
+            ViewBag.roleid = Session["RoleID"];
+
+
+            //var result = db.tblmachinedetails.Select(m=>m.ShopNo).Distinct();
+
+            ViewData["PlantID"] = new SelectList(Serverdb.tblplants.Where(m => m.IsDeleted == 0), "PlantID", "PlantName");
+            ViewData["ShopID"] = new SelectList(Serverdb.tblshops.Where(m => m.IsDeleted == 0 && m.PlantID == 999), "ShopID", "ShopName");
+            ViewData["CellID"] = new SelectList(Serverdb.tblcells.Where(m => m.IsDeleted == 0 && m.PlantID == 999), "CellID", "CellName");
+            //ViewData["MachineID"] = new SelectList(Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0 && m.PlantID == 999), "MachineID", "MachineDisplayName");
+            ViewData["ByMethod"] = "0";
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult AlaramReport(int PlantID, String FromDate, int ShopID = 0, int CellID = 0)
+        {
+
+            AlramReportExcel(PlantID, FromDate, ShopID, CellID);
+            ViewData["PlantID"] = new SelectList(Serverdb.tblplants.Where(m => m.IsDeleted == 0), "PlantID", "PlantName");
+            ViewData["ShopID"] = new SelectList(Serverdb.tblshops.Where(m => m.IsDeleted == 0 && m.PlantID == 999), "ShopID", "ShopName");
+            ViewData["CellID"] = new SelectList(Serverdb.tblcells.Where(m => m.IsDeleted == 0 && m.PlantID == 999), "CellID", "CellName");
+            //ViewData["MachineID"] = new SelectList(Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0 && m.PlantID == 999), "MachineID", "MachineDisplayName");
+            ViewData["ByMethod"] = "0";
+            return View();
+        }
+
+
+
+        public void AlramReportExcel(int PlantID, String FromDate, int ShopID = 0, int CellID = 0)
+        {
+            //Using the template of the header
+            FileInfo templateFile = new FileInfo(@"C:\MasterCraftReport\MainTemplate\AlarmReport.xlsx");
+            //FileInfo templateFile = new FileInfo(@"C:\Users\Pavan Kumar\Desktop\TitanAlarmReportPDF.xlsx");
+            ExcelPackage templatep = new ExcelPackage(templateFile);
+            ExcelWorksheet Templatews = templatep.Workbook.Worksheets[1];
+            //Getting the exact file
+
+            String FileDir = @"C:\MasterCraftReport\ReportsList\" + System.DateTime.Now.ToString("yyyy-MM-dd");
+            //String FileDir = @"E:\ReportsList\Alarm\" + System.DateTime.Now.AddDays(-1).ToString("yyyy");
+            //String FileDir = @"C:\Users\Pavan Kumar\Desktop\" + System.DateTime.Now.AddDays(-1).ToString("yyyy");
+
+            bool exists = System.IO.Directory.Exists(FileDir);
+
+            if (!exists)
+            {
+                System.IO.Directory.CreateDirectory(FileDir);
+            }
+
+            string pathString = System.IO.Path.Combine(FileDir, "Alarm " + System.DateTime.Now.ToString("MMMMyyyy") + ".xls");
+
+            String sourceFile = System.IO.Path.Combine(FileDir, "Alarm " + System.DateTime.Now.ToString("MMMMyyyy") + ".xls");
+            FileInfo newFile = new FileInfo(System.IO.Path.Combine(FileDir, "Alarm " + System.DateTime.Now.AddDays(1).ToString("MMMMyyyy") + ".xls"));
+            FileInfo nextFile = null;
+            if (newFile.Exists)
+            {
+                newFile.Delete();
+                nextFile = new FileInfo(System.IO.Path.Combine(FileDir, "Alarm " + System.DateTime.Now.ToString("MMMMyyyy") + "1.xls"));
+            }
+
+            //Using the File for generation and populating it
+            ExcelPackage p = null;
+            if (nextFile != null)
+            {
+                //p = new ExcelPackage(nextFile, newFile);
+                p = new ExcelPackage(newFile);
+            }
+            else
+            {
+                p = new ExcelPackage(newFile);
+            }
+            ExcelWorksheet worksheet = null;
+
+            //Creating the WorkSheet for populating
+            try
+            {
+                worksheet = p.Workbook.Worksheets.Add(System.DateTime.Now.ToString("dd-MM-yyyy"), Templatews);
+            }
+            catch { }
+
+            if (worksheet == null)
+            {
+                worksheet = p.Workbook.Worksheets.Add(System.DateTime.Now.ToString("dd-MM-yyyy"), Templatews);
+            }
+
+            if (System.DateTime.Now.AddDays(1).ToString("ddd").ToUpper() == "SUN")
+            {
+                worksheet.TabColor = Color.MediumVioletRed;
+            }
+
+            //worksheet.Protection.SetPassword("titan" + System.DateTime.Now.AddDays(-1).ToString("MMyyyy"));
+            //worksheet.Protection.AllowSelectLockedCells = true;
+            int sheetcount = p.Workbook.Worksheets.Count;
+            p.Workbook.Worksheets.MoveToStart(sheetcount);
+            worksheet.Cells.Style.Font.Name = "Times New Roman";
+            worksheet.Cells.Style.Font.Bold = true;
+
+            worksheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            worksheet.Cells.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+            //Creating  the mymsqlConnection and opening the connection
+            MsqlConnection mc = new MsqlConnection();
+            mc.open();
+            worksheet.Cells["B2"].Value = FromDate;
+            worksheet.Cells["B2"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+            worksheet.Cells["B2"].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
+            worksheet.Cells["A2"].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
+
+            //The general Details of the excel file needed to populate the data into the excel
+            int slno = 1;
+            String TCMacName = null, TMMacName = null, VMCMacName = null, HMCMacName = null;
+            int row = 5;
+            Char Startcol = 'A';
+            Char EndCol = 'H';
+            String StartCell = (Startcol.ToString() + row).ToString();
+            String EndCell = (EndCol.ToString() + row).ToString();
+            String NextCell = StartCell;
+            //Populating the Turning Centre data
+            #region
+            //string TCSQLQuery = "Select AlarmMessage,AlarmTime,v.MachineID,MachineModel,MachineMake,MachineDispName,AlarmNo,Axis_No From alarm_history_master v,machine_master m " +
+            //                    "Where v.MachineID = m.MachineID  and v.CorrectedDate = '" + System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd") +
+            //                    "' ORDER BY v.MachineID,v.AlarmDateTime ASC";
+            //MySqlDataAdapter daTC = new MySqlDataAdapter(TCSQLQuery, mc.msqlConnection);
+            //System.Data.DataTable dtTC = new System.Data.DataTable();
+            //daTC.Fill(dtTC);
+            //worksheet.Cells["A" + row + ":H" + row].Merge = true;
+            //worksheet.Cells[StartCell].Value = "TURNING CENTER - ALARMS LIST";
+            //worksheet.Cells["A" + row + ":H" + row].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+            //worksheet.Cells["A" + row + ":H" + row].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(204, 255, 51));
+            //worksheet.Cells["A" + row + ":H" + row].Style.Border.Top.Style = ExcelBorderStyle.Double;
+            //worksheet.Cells["A" + row + ":H" + row].Style.Border.Bottom.Style = ExcelBorderStyle.Double;
+            //worksheet.Cells["A" + row + ":H" + row].Style.Border.Left.Style = ExcelBorderStyle.Double;
+            //worksheet.Cells["A" + row + ":H" + row].Style.Border.Right.Style = ExcelBorderStyle.Double;
+            int startrow = row + 1;
+            //Insert Value into the excel cell for each n every machine
+            List<tblmachinedetail> MachDet = new List<tblmachinedetail>();
+            if (CellID != 0)
+            {
+                MachDet = Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0 && m.CellID == CellID).ToList();
+            }
+            else if (ShopID != 0)
+            {
+                MachDet = Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0 && m.ShopID == ShopID).ToList();
+            }
+            else
+            {
+                MachDet = Serverdb.tblmachinedetails.Where(m => m.IsDeleted == 0 && m.PlantID == PlantID).ToList();
+            }
+
+            foreach (var Machrow in MachDet)
+            {
+                int MachId = Machrow.MachineID;
+                DateTime frmDate = Convert.ToDateTime(FromDate);
+                var AlarmDet = Serverdb.alarm_history_master.Where(m => m.CorrectedDate == frmDate && m.MachineID == MachId).OrderBy(m => new { m.MachineID, m.AlarmDateTime }).ToList();
+
+                //for (int i = 0; i < dtTC.Rows.Count; i++)
+                //    {
+                foreach (var AlarmRow in AlarmDet)
+                {
+                    row++;
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Top.Style = ExcelBorderStyle.None;
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Bottom.Style = ExcelBorderStyle.None;
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Left.Style = ExcelBorderStyle.None;
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Right.Style = ExcelBorderStyle.None;
+                    worksheet.Cells["E" + row + ":H" + row].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells["E" + row + ":H" + row].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells["E" + row + ":H" + row].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells["E" + row + ":H" + row].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells["G" + row].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    char colnam = Startcol;
+                    //String TCMacNameRep = dtTC.Rows[i][2].ToString();
+                    //if (TCMacName != TCMacNameRep)
+                    //{
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells["A" + row + ":D" + row].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                    StartCell = (Startcol.ToString() + row).ToString();
+                    EndCell = (EndCol.ToString() + row).ToString();
+                    worksheet.Cells[StartCell].Value = slno;
+                    slno++;
+                    colnam++;
+                    NextCell = (colnam.ToString() + row).ToString();
+                    //worksheet.Cells[NextCell].Value = dtTC.Rows[i][5].ToString();
+                    worksheet.Cells[NextCell].Value = Machrow.MachineDisplayName;
+                    worksheet.Cells[NextCell].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    colnam++;
+                    NextCell = (colnam.ToString() + row).ToString();
+                    //worksheet.Cells[NextCell].Value = dtTC.Rows[i][4].ToString();
+                    worksheet.Cells[NextCell].Value = Machrow.MachineMake;
+                    worksheet.Cells[NextCell].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    colnam++;
+                    NextCell = (colnam.ToString() + row).ToString();
+                    //worksheet.Cells[NextCell].Value = dtTC.Rows[i][3].ToString();
+                    worksheet.Cells[NextCell].Value = Machrow.MachineModel;
+                    worksheet.Cells[NextCell].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    colnam++;
+                    NextCell = (colnam.ToString() + row).ToString();
+                    //}
+                    //String AxisNo = dtTC.Rows[i][7].ToString();
+                    String AxisNo = AlarmRow.Axis_No;
+                    if (AxisNo == "0")
+                    {
+                        AxisNo = "-";
+                    }
+                    //worksheet.Cells["E" + row].Value = dtTC.Rows[i][6].ToString();
+                    worksheet.Cells["E" + row].Value = AlarmRow.AlarmNo;
+                    worksheet.Cells["F" + row].Value = AxisNo;
+                    //worksheet.Cells["G" + row].Value = dtTC.Rows[i][0].ToString();
+                    worksheet.Cells["G" + row].Value = AlarmRow.AlarmMessage;
+                    //worksheet.Cells["H" + row].Value = Convert.ToDateTime(dtTC.Rows[i][1].ToString()).ToString("hh:mm tt");
+                    worksheet.Cells["H" + row].Value = Convert.ToDateTime(AlarmRow.AlarmDateTime).ToString("hh:mm tt");
+                    //TCMacName = TCMacNameRep;
+                }
+                #endregion
+                mc.close();
+            }
+
+            p.Save();
+            //if (nextFile != null)
+            //{
+            //    newFile.Delete();
+            //    nextFile.MoveTo(sourceFile);
+            //}
+
+            string path1 = System.IO.Path.Combine(FileDir, "Alarm " + DateTime.Now.ToString("MMMMyyyy") + ".xls");
+            System.IO.FileInfo file1 = new System.IO.FileInfo(path1);
+            //string Outgoingfile = "LossDetailsReport" + frda.ToString("yyyy-MM-dd") + ".xlsx";
+            string Outgoingfile = "Alarm " + DateTime.Now.ToString("MMMMyyyy") + ".xls";
+            if (file1.Exists)
+            {
+                Response.Clear();
+                Response.ClearContent();
+                Response.ClearHeaders();
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + Outgoingfile);
+                Response.AddHeader("Content-Length", file1.Length.ToString());
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.WriteFile(file1.FullName);
+                Response.Flush();
+                Response.Close();
+            }
         }
 
         public void PushDataToTblPartLearingReport(PartSearchCreate obj)

@@ -162,7 +162,7 @@ namespace SRKSDemo.Controllers
             //  String IPAddress = GM.GetIPAddressofTabSystem();
             //int macid = Session["MachineID"];
             //int MachineID = _ServerContext.tblmachinedetails.Where(m =>m.MachineID == 7&& m.IsDeleted == 0).Select(m => m.MachineID).FirstOrDefault();
-            int MachineID = Convert.ToInt32(Session["MachineID"]);
+            int MachineID = Convert.ToInt32( Session["MachineID"]);
 
             //Session["MachineID"] = MachineID;
             //int MachineID = Convert.ToInt32(Session["MachineID"]);
@@ -371,7 +371,7 @@ namespace SRKSDemo.Controllers
             WOEntry.MachineID = MachineID;
             WOEntry.OperationNo = WOE.OperationNo;
             WOEntry.OperatorID = WOE.OperatorID;
-            WOEntry.PartNo = WOE.FGCode;
+            WOEntry.PartNo =WOE.FGCode;
             WOEntry.PEStartTime = DateTime.Now;
             WOEntry.Prod_Order_No = WOE.Prod_Order_No;
             WOEntry.ScrapQty = 0;
@@ -405,12 +405,12 @@ namespace SRKSDemo.Controllers
             string operationNo = WOE.OperationNo;
             string FGCode = WOE.FGCode;
 
-            var toolObj = _ServerContext.tblStdToolLives.Where(m => m.FGCode == FGCode && m.OperationNo == operationNo && m.IsDeleted == false && m.MachineID == MachineID).ToList();
+            var toolObj = _ServerContext.tblStdToolLives.Where(m => m.FGCode == FGCode && m.OperationNo == operationNo && m.IsDeleted == false && m.MachineID==MachineID).ToList();
 
             foreach (var itemTool in toolObj)
             {
                 int ToolLifeCount = 0;
-                GetToolLifeCounter(FGCode, operationNo, itemTool.ToolNo, MachineID, ref ToolLifeCount);
+                GetToolLifeCounter(FGCode, operationNo, itemTool.ToolNo, MachineID,ref ToolLifeCount);
                 //adding new row server
                 tbltoollifeoperator ServertabTLO = new tbltoollifeoperator();
                 ServertabTLO.MachineID = MachineID;
@@ -424,7 +424,7 @@ namespace SRKSDemo.Controllers
                 ServertabTLO.IsReset = 0;
                 ServertabTLO.IsDeleted = 0;
                 ServertabTLO.ResetCounter = 0;
-
+              
                 ServertabTLO.IsCompleted = false;
                 ServertabTLO.IsCycleStart = false;
                 _ServerContext.tbltoollifeoperators.Add(ServertabTLO);
@@ -466,7 +466,7 @@ namespace SRKSDemo.Controllers
             {
                 GetMode GM = new GetMode();
                 //  String IPAddress = GM.GetIPAddressofTabSystem();
-                MachineID = Convert.ToInt32(Session["MachineID"]);
+                 MachineID = Convert.ToInt32(Session["MachineID"]);
                 //MachineID = _ServerContext.tblmachinedetails.Where(m => m.MachineID == 7 && m.IsDeleted == 0).Select(m => m.MachineID).First();
 
                 Session["MachineID"] = MachineID;
@@ -498,7 +498,7 @@ namespace SRKSDemo.Controllers
             {
                 GetMode GM = new GetMode();
                 //  String IPAddress = GM.GetIPAddressofTabSystem();
-                MachineID = Convert.ToInt32(Session["MachineID"]);
+                 MachineID = Convert.ToInt32(Session["MachineID"]);
                 //MachineID = _ServerContext.tblmachinedetails.Where(m => m.MachineID == 7 && m.IsDeleted == 0).Select(m => m.MachineID).First();
 
                 Session["MachineID"] = MachineID;
@@ -522,52 +522,52 @@ namespace SRKSDemo.Controllers
             return Json(Data, JsonRequestBehavior.AllowGet);
         }
 
-        //public void updateTool(int hmiid)
-        //{
-        //    #region//updation in tbltoollife operator in server and tab
+            //public void updateTool(int hmiid)
+            //{
+            //    #region//updation in tbltoollife operator in server and tab
 
-        //    var list = _ServerContext.tbltoollifeoperators.Where(m => m.HMIID == hmiid).ToList();
-        //    foreach (var item in list)
-        //    {
-        //        try
-        //        {
-        //            var updateTabTool = _ServerContext.tbltoollifeoperators.Find(item.ToolLifeID);
-        //            updateTabTool.IsCompleted = true;
-        //            _ServerContext.Entry(updateTabTool).State = System.Data.Entity.EntityState.Modified;
-        //            _ServerContext.SaveChanges();
+            //    var list = _ServerContext.tbltoollifeoperators.Where(m => m.HMIID == hmiid).ToList();
+            //    foreach (var item in list)
+            //    {
+            //        try
+            //        {
+            //            var updateTabTool = _ServerContext.tbltoollifeoperators.Find(item.ToolLifeID);
+            //            updateTabTool.IsCompleted = true;
+            //            _ServerContext.Entry(updateTabTool).State = System.Data.Entity.EntityState.Modified;
+            //            _ServerContext.SaveChanges();
 
-        //            var updateServerTool = _ServerContext.tbltoollifeoperators.Find(item.ToolIDAdmin);
-        //            updateServerTool.IsCompleted = true;
-        //            _ServerContext.Entry(updateServerTool).State = System.Data.Entity.EntityState.Modified;
-        //            _ServerContext.SaveChanges();
-        //        }
-        //        catch
-        //        {
+            //            var updateServerTool = _ServerContext.tbltoollifeoperators.Find(item.ToolIDAdmin);
+            //            updateServerTool.IsCompleted = true;
+            //            _ServerContext.Entry(updateServerTool).State = System.Data.Entity.EntityState.Modified;
+            //            _ServerContext.SaveChanges();
+            //        }
+            //        catch
+            //        {
 
-        //        }
-        //    }
-        //    #endregion
-        //}
+            //        }
+            //    }
+            //    #endregion
+            //}
 
-        public void GetToolLifeCounter(String FGCode, String OpNo, String ToolNum, int MachineID, ref int ToolLifeCount)
-        {
-            ToolLifeCount = 0;
-            var GetHMIID = _ServerContext.tblworkorderentries.Where(m => m.FGCode == FGCode && m.OperationNo == OpNo && m.IsFinished == 1 && m.MachineID == MachineID).OrderByDescending(m => m.HMIID).FirstOrDefault();
-            if (GetHMIID != null)
+            public void GetToolLifeCounter(String FGCode, String OpNo, String ToolNum,int MachineID, ref int ToolLifeCount)
             {
-                var GetToolCount = _ServerContext.tbltoollifeoperators.Where(m => m.HMIID == GetHMIID.HMIID && m.IsReset == 0 && m.ToolNo == ToolNum).OrderByDescending(m => m.ToolLifeID).FirstOrDefault();
-                if (GetToolCount != null)
+                ToolLifeCount = 0;
+                var GetHMIID = _ServerContext.tblworkorderentries.Where(m => m.FGCode == FGCode && m.OperationNo == OpNo && m.IsFinished == 1 && m.MachineID==MachineID).OrderByDescending(m => m.HMIID).FirstOrDefault();
+                if (GetHMIID != null)
                 {
-                    ToolLifeCount = GetToolCount.toollifecounter;
+                    var GetToolCount = _ServerContext.tbltoollifeoperators.Where(m => m.HMIID == GetHMIID.HMIID && m.IsReset == 0 && m.ToolNo == ToolNum).OrderByDescending(m => m.ToolLifeID).FirstOrDefault();
+                    if (GetToolCount != null)
+                    {
+                        ToolLifeCount = GetToolCount.toollifecounter;
+                    }
                 }
             }
-        }
 
-        public ActionResult MaintenanceProductionWindow(int smValue = 0)
+            public ActionResult MaintenanceProductionWindow(int smValue = 0)
         {
             GetMode GM = new GetMode();
             //  String IPAddress = GM.GetIPAddressofTabSystem();
-            int MachineID = Convert.ToInt32(Session["MachineID"]);
+          int  MachineID = Convert.ToInt32(Session["MachineID"]);
             //int MachineID = _ServerContext.tblmachinedetails.Where(m =>m.MachineID == 7&& m.IsDeleted == 0).Select(m => m.MachineID).First();
 
             Session["MachineID"] = MachineID;
@@ -610,7 +610,7 @@ namespace SRKSDemo.Controllers
         {
             GetMode GM = new GetMode();
             //  String IPAddress = GM.GetIPAddressofTabSystem();
-            int MachineID = Convert.ToInt32(Session["MachineID"]);
+           int MachineID = Convert.ToInt32(Session["MachineID"]);
             //int MachineID = _ServerContext.tblmachinedetails.Where(m =>m.MachineID == 7&& m.IsDeleted == 0).Select(m => m.MachineID).First();
 
             Session["MachineID"] = MachineID;
@@ -625,7 +625,7 @@ namespace SRKSDemo.Controllers
                 mode.DurationInSec = Convert.ToInt32(DateTime.Now.Subtract(Convert.ToDateTime(mode.StartTime)).TotalSeconds);
                 mode.StartIdle = 0;
                 mode.ModifiedOn = DateTime.Now;
-                // mode.IsPiWeb = 0;
+               // mode.IsPiWeb = 0;
                 _ServerContext.Entry(mode).State = System.Data.Entity.EntityState.Modified;
                 _ServerContext.SaveChanges();
             }
@@ -711,7 +711,7 @@ namespace SRKSDemo.Controllers
             {
                 Session["message"] = "";
             }
-            int MachineID = Convert.ToInt32(Session["MachineID"]);
+          int  MachineID = Convert.ToInt32(Session["MachineID"]);
             //int MachineID = _ServerContext.tblmachinedetails.Where(m =>m.MachineID == 7&& m.IsDeleted == 0).Select(m => m.MachineID).First();
 
             Session["MachineID"] = MachineID;
@@ -834,7 +834,7 @@ namespace SRKSDemo.Controllers
                     prvmode.LossCodeEnteredBy = "";
                     prvmode.ModifiedOn = DateTime.Now;
                     prvmode.ModifiedBy = Convert.ToInt32(Session["UserID"]);
-                    // prvmode.IsPiWeb = 0;
+                   // prvmode.IsPiWeb = 0;
                     _ServerContext.Entry(prvmode).State = System.Data.Entity.EntityState.Modified;
                     _ServerContext.SaveChanges();
 
@@ -1321,7 +1321,7 @@ namespace SRKSDemo.Controllers
                 tm.ModeTypeEnd = 0;
                 tm.StartIdle = 0;
                 tm.StartTime = tm.InsertedOn;
-                // tm.IsPiWeb = 0;
+               // tm.IsPiWeb = 0;
                 //tm.ServerModeID = ServerNewTM.ModeID;
                 // tm.Sync = 0;  Ashok
                 _ServerContext.tbllivemodes.Add(tm);
@@ -1664,7 +1664,7 @@ namespace SRKSDemo.Controllers
             GetMode GM = new GetMode();
             Ping ping = new Ping();
             //String TabIPAddress = GM.GetIPAddressofTabSystem();
-            var MachineDetails = _ServerContext.tblmachinedetails.Where(m => m.MachineID == 7 && m.IsDeleted == 0).FirstOrDefault();
+            var MachineDetails = _ServerContext.tblmachinedetails.Where(m =>m.MachineID == 7&& m.IsDeleted == 0).FirstOrDefault();
 
             try
             {

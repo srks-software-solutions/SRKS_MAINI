@@ -77,11 +77,11 @@
                                 <li>
                                     <a href="~/Dashboard/Dashboard"><img src="~/images/dashboard.png" /> Dashboard<span class="fa fa-chevron-down"></span></a>
                                     @*<ul class="nav child_menu">
-                                                                            <li><a href="index.html">Dashboard</a></li>
-                                        <li><a href="index2.html">Dashboard2</a></li>
-                                        <li><a href="index3.html">Dashboard3</a></li>
-                                        <li>@Html.ActionLink("Dashboard", "Dashboard", "Dashboard")</li>
-                                                                        </ul>*@
+                                                <li><a href="index.html">Dashboard</a></li>
+            <li><a href="index2.html">Dashboard2</a></li>
+            <li><a href="index3.html">Dashboard3</a></li>
+            <li>@Html.ActionLink("Dashboard", "Dashboard", "Dashboard")</li>
+                                            </ul>*@
                                 </li>
 
                                 <li>
@@ -95,10 +95,18 @@
                                 </li>
 
                                 <li>
+
+                                    <a><img src="~/images/timetable(1).png" /><br /> PMS Entry Screen <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("PMS Entry Screen", "Index", "PMSEntryScreen")</li>
+                                    </ul>
+                                </li>
+
+                                <li>
                                     <a href="~/ProgramExecutionMonitor/Index"> <img src="~/images/part.png" /><br />Virtual HMI <span class="fa fa-chevron-down"></span></a>
                                     @*<ul class="nav child_menu">
-                                            <li>@Html.ActionLink("Virtual HMI", "Index", "ProgramExecutionMonitor")</li>
-                                        </ul>*@
+                <li>@Html.ActionLink("Virtual HMI", "Index", "ProgramExecutionMonitor")</li>
+            </ul>*@
                                 </li>
                                 <li>
                                     <a href="~/ProgramTransfer/Index">
@@ -106,8 +114,8 @@
                                         <br />NC Program Transfer <span class="fa fa-chevron-down"></span>
                                     </a>
                                     @*<ul class="nav child_menu">
-                                           <li>@Html.ActionLink("PragramTransfer", "Index", "ProgramTransfer")</li>
-                                        </ul>*@
+               <li>@Html.ActionLink("PragramTransfer", "Index", "ProgramTransfer")</li>
+            </ul>*@
                                 </li>
                                 <li>
                                     <a><img src="~/images/report.png" /><br /> Report <span class="fa fa-chevron-down"></span></a>
@@ -118,19 +126,20 @@
                                         <li>@Html.ActionLink("OEE Report", "OEEReport", "Reports")</li>
                                         <li>@Html.ActionLink("Cycle Time Report", "CycleTime", "Reports")</li>
                                         <li>@Html.ActionLink("Tool Life Monitoring Sheet", "ToolLife", "Reports")</li>
+                                        <li>@Html.ActionLink("Alaram Report", "AlaramReport", "Reports")</li>
                                         @*<li>@Html.ActionLink("PMS Report", "PMSReport", "Reports")</li>*@
                                     </ul>
                                 </li>
                                 @*<li>
-                                    <a href="~/OperatorEntryAdmin/SelectMachineAdmin">
-                                        <img src="~/images/mach.png" />
+        <a href="~/OperatorEntryAdmin/SelectMachineAdmin">
+            <img src="~/images/mach.png" />
 
-                                        <br />Operator Input <span class="fa fa-chevron-down"></span>
-                                    </a>*@
+            <br />Operator Input <span class="fa fa-chevron-down"></span>
+        </a>*@
                                 @*<a><img src="~/images/mach.png" /> Operator Input <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li>@Html.ActionLink("Operator Input", "Index", "OperatorEntry")</li>
-                                    </ul>*@
+        <ul class="nav child_menu">
+            <li>@Html.ActionLink("Operator Input", "Index", "OperatorEntry")</li>
+        </ul>*@
                                 @*</li>*@
                                 <li>
                                     <a><img src="~/images/part.png" /> Andon Scheduling <span class="fa fa-chevron-down"></span></a>
@@ -146,11 +155,12 @@
                                         <li>
                                             <a href="/PreventiveMaintainanceScheduling/Index">Preventive Maintainance Scheduling Details</a>
                                         </li>
-                                        <li>
-                                            <a href="/PmCheckList/Index">PmCheckList Details</a>
-                                        </li>
+
                                         <li>
                                             <a href="/PmCheckPoint/Index">PmCheckPoint Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="/PmCheckList/Index">PmCheckList Details</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -176,9 +186,9 @@
                                     <ul class="nav child_menu">
                                         <li>@Html.ActionLink("Production Losses", "Index", "ProductionLoss")</li>
                                         @*<li><a href="chartjs2.html">Chart JS2</a></li>
-                                            <li><a href="morisjs.html">Moris JS</a></li>
-                                            <li><a href="echarts.html">ECharts</a></li>
-                                            <li><a href="other_charts.html">Other Charts</a></li>*@
+                <li><a href="morisjs.html">Moris JS</a></li>
+                <li><a href="echarts.html">ECharts</a></li>
+                <li><a href="other_charts.html">Other Charts</a></li>*@
                                     </ul>
                                 </li>
                                 <li>
@@ -222,16 +232,16 @@
                                     </ul>
                                 </li>
                                 @* <li>
-                                    @if (ViewBag.roleid == 1)
-                                               {
-                                                   <a><i class="fa fa-home"></i> Role Module <span class="fa fa-chevron-down"></span></a>
-                                                   <ul class="nav child_menu">
-                                                       <li>  @Html.ActionLink("Role Module", "Index", "RoleModule")</li>
-                                       <li>@Html.ActionLink("Modules", "Index", "Modules")</li>
+        @if (ViewBag.roleid == 1)
+                   {
+                       <a><i class="fa fa-home"></i> Role Module <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                           <li>  @Html.ActionLink("Role Module", "Index", "RoleModule")</li>
+           <li>@Html.ActionLink("Modules", "Index", "Modules")</li>
 
-                                                                               </ul>
-                                                                           }
-                                                            </li>*@
+                                                   </ul>
+                                               }
+                                </li>*@
 
                                 <li>
                                     <a>
@@ -240,6 +250,17 @@
                                     <ul class="nav child_menu">
                                         <li>@Html.ActionLink("Auto Email Report", "Index", "AutomaticEmailReport")</li>
                                         <li>@Html.ActionLink("Escalation Matrix", "Index", "EscalationMatrix")</li>
+                                    </ul>
+                                </li>
+
+
+                                <li>
+                                    <a>
+                                        <img src="~/images/auto.png" /><br /> Operator Details <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Operator Details", "Index", "OperatorLoginDetails")</li>
+
                                     </ul>
                                 </li>
                             </ul>

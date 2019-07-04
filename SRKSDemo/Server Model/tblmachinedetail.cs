@@ -17,7 +17,6 @@ namespace SRKSDemo.Server_Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblmachinedetail()
         {
-            this.configuration_tblprimitivemaintainancescheduling = new HashSet<configuration_tblprimitivemaintainancescheduling>();
             this.configurationtblmachinesensors = new HashSet<configurationtblmachinesensor>();
             this.tbl_autoreportsetting = new HashSet<tbl_autoreportsetting>();
             this.tbl_axisdet = new HashSet<tbl_axisdet>();
@@ -33,6 +32,7 @@ namespace SRKSDemo.Server_Model
             this.tblemailescalations = new HashSet<tblemailescalation>();
             this.tbllivedailyprodstatus = new HashSet<tbllivedailyprodstatu>();
             this.tbllivemodes = new HashSet<tbllivemode>();
+            this.tblmodes = new HashSet<tblmode>();
             this.tblmodetemps = new HashSet<tblmodetemp>();
             this.tblNcProgramTransferMains = new HashSet<tblNcProgramTransferMain>();
             this.tblOperatorDashboards = new HashSet<tblOperatorDashboard>();
@@ -48,7 +48,7 @@ namespace SRKSDemo.Server_Model
             this.tblshiftplanners = new HashSet<tblshiftplanner>();
             this.tblusers = new HashSet<tbluser>();
             this.tblpartscountandcuttings = new HashSet<tblpartscountandcutting>();
-            this.tblmodes = new HashSet<tblmode>();
+            this.configuration_tblprimitivemaintainancescheduling = new HashSet<configuration_tblprimitivemaintainancescheduling>();
         }
     
         public int MachineID { get; set; }
@@ -105,8 +105,6 @@ namespace SRKSDemo.Server_Model
         public Nullable<int> LossFlag { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<configuration_tblprimitivemaintainancescheduling> configuration_tblprimitivemaintainancescheduling { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<configurationtblmachinesensor> configurationtblmachinesensors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_autoreportsetting> tbl_autoreportsetting { get; set; }
@@ -137,6 +135,8 @@ namespace SRKSDemo.Server_Model
         public virtual ICollection<tbllivedailyprodstatu> tbllivedailyprodstatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbllivemode> tbllivemodes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblmode> tblmodes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblmodetemp> tblmodetemps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -170,6 +170,6 @@ namespace SRKSDemo.Server_Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblpartscountandcutting> tblpartscountandcuttings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblmode> tblmodes { get; set; }
+        public virtual ICollection<configuration_tblprimitivemaintainancescheduling> configuration_tblprimitivemaintainancescheduling { get; set; }
     }
 }

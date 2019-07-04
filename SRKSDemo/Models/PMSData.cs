@@ -22,10 +22,10 @@ namespace SRKSDemo
     {
         public int pmid { get; set; }
         public string month { get; set; }
-        public int monthID { get; set; }
         public int week { get; set; }
         public int MachineID { get; set; }
         public string MachineName { get; set; }
+        public int monthID { get; set; }
         public int Year { get; set; }
         public SelectList selectMonth { get; set; }
 

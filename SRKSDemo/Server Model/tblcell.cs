@@ -28,8 +28,8 @@ namespace SRKSDemo.Server_Model
             this.tblmultipleworkorders = new HashSet<tblmultipleworkorder>();
             this.tblrejectreasons = new HashSet<tblrejectreason>();
             this.tblshiftplanners = new HashSet<tblshiftplanner>();
-            this.configuration_tblprimitivemaintainancescheduling = new HashSet<configuration_tblprimitivemaintainancescheduling>();
             this.tblmachinedetails = new HashSet<tblmachinedetail>();
+            this.configuration_tblprimitivemaintainancescheduling = new HashSet<configuration_tblprimitivemaintainancescheduling>();
         }
     
         public int CellID { get; set; }
@@ -69,8 +69,8 @@ namespace SRKSDemo.Server_Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblshiftplanner> tblshiftplanners { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<configuration_tblprimitivemaintainancescheduling> configuration_tblprimitivemaintainancescheduling { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblmachinedetail> tblmachinedetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<configuration_tblprimitivemaintainancescheduling> configuration_tblprimitivemaintainancescheduling { get; set; }
     }
 }

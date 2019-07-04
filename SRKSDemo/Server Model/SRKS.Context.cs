@@ -95,7 +95,6 @@ namespace SRKSDemo.Server_Model
         public virtual DbSet<tblholiday> tblholidays { get; set; }
         public virtual DbSet<tblHolidayTypeMaster> tblHolidayTypeMasters { get; set; }
         public virtual DbSet<tbllivedailyprodstatu> tbllivedailyprodstatus { get; set; }
-        public virtual DbSet<tbllivemode> tbllivemodes { get; set; }
         public virtual DbSet<tbllossescode> tbllossescodes { get; set; }
         public virtual DbSet<tbllossofentry> tbllossofentries { get; set; }
         public virtual DbSet<tblmachineaxisdetail> tblmachineaxisdetails { get; set; }
@@ -155,13 +154,13 @@ namespace SRKSDemo.Server_Model
         public virtual DbSet<tblStdToolLife> tblStdToolLives { get; set; }
         public virtual DbSet<tblOperatorMachineDetail> tblOperatorMachineDetails { get; set; }
         public virtual DbSet<tblOperatorLoginDetail> tblOperatorLoginDetails { get; set; }
-        public virtual DbSet<configuration_tblprimitivemaintainancescheduling> configuration_tblprimitivemaintainancescheduling { get; set; }
         public virtual DbSet<tblBreakdowncode> tblBreakdowncodes { get; set; }
         public virtual DbSet<tblBreakDownTickect> tblBreakDownTickects { get; set; }
-        public virtual DbSet<tblmaintainanceProdBrDetail> tblmaintainanceProdBrDetails { get; set; }
+        public virtual DbSet<tbllivemode> tbllivemodes { get; set; }
         public virtual DbSet<tblmachinedetail> tblmachinedetails { get; set; }
-        public virtual DbSet<tblpartscountandcutting> tblpartscountandcuttings { get; set; }
         public virtual DbSet<tblmode> tblmodes { get; set; }
+        public virtual DbSet<tblpartscountandcutting> tblpartscountandcuttings { get; set; }
         public virtual DbSet<tblPrecentColour> tblPrecentColours { get; set; }
+        public virtual DbSet<configuration_tblprimitivemaintainancescheduling> configuration_tblprimitivemaintainancescheduling { get; set; }
     }
 }

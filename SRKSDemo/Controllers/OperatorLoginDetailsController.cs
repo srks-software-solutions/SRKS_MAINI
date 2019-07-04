@@ -36,10 +36,10 @@ namespace SRKSDemo.Controllers
         [HttpGet]
         public ActionResult CreateOperatorLogin()
         {
-           
+
             using (unitworksccsEntities1 db = new unitworksccsEntities1())
             {
-                ViewBag.Roles = new SelectList(db.tblroles.Where(m => m.IsDeleted == 0 && (m.Role_ID==6 || m.Role_ID==9)), "Role_ID", "RoleName").ToList();
+                ViewBag.Roles = new SelectList(db.tblroles.Where(m => m.IsDeleted == 0 && (m.Role_ID == 6 || m.Role_ID == 9)), "Role_ID", "RoleName").ToList();
                 ViewBag.machineDetails = new SelectList(db.tblmachinedetails.Where(m => m.IsDeleted == 0), "MachineID", "MachineName").ToList();
                 return View();
             }
@@ -48,8 +48,6 @@ namespace SRKSDemo.Controllers
         [HttpPost]
         public string CreateOperatorLogin(OperatorLoginDetails OperatorLogin)
         {
-
-           
             ViewBag.Logout = Session["Username"].ToString().ToUpper();
             ViewBag.roleid = Session["RoleID"];
             String Username = Session["Username"].ToString();
@@ -194,7 +192,7 @@ namespace SRKSDemo.Controllers
 
         public string DeleteOperatorDetails(int id)
         {
-           
+
             ViewBag.Logout = Session["Username"].ToString().ToUpper();
             ViewBag.roleid = Session["RoleID"];
             String Username = Session["Username"].ToString();

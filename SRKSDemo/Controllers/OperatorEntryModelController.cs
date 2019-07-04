@@ -55,11 +55,11 @@ namespace SRKSDemo.Controllers
                     foreach (var Row in WorkOrderentryDet)
                     {
                         int ShiftID = Row.ShiftID;
-                        int PartsActual = 0, PartsTarget = 0, ShiftActual = 0, ShiftTarget = 0;
+                        int PartsActual=0,PartsTarget=0, ShiftActual = 0, ShiftTarget=0;
                         PartsActual = db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime == StartHour && m.EndTime == EndHour).Select(m => m.PartCount).FirstOrDefault();
                         PartsTarget = db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime == StartHour && m.EndTime == EndHour).Select(m => m.TargetQuantity).FirstOrDefault();
-                        var ShiftCountA = db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime >= ShiftStratTime && m.EndTime <= ShiftEndTime).ToList();
-                        if (ShiftCountA.Count == 0)
+                        var ShiftCountA= db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime >= ShiftStratTime && m.EndTime <= ShiftEndTime).ToList();
+                        if(ShiftCountA.Count==0)
                         {
                             ShiftActual = 0;
                         }
@@ -67,14 +67,14 @@ namespace SRKSDemo.Controllers
                         {
                             ShiftActual = db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime >= ShiftStratTime && m.EndTime <= ShiftEndTime).Sum(m => m.PartCount);
                         }
-                        var ShiftCountT = db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime >= ShiftStratTime && m.EndTime <= ShiftEndTime).ToList();
-                        if (ShiftCountT.Count() == 0)
+                        var ShiftCountT= db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime >= ShiftStratTime && m.EndTime <= ShiftEndTime).ToList();
+                        if (ShiftCountT.Count()==0)
                         {
                             ShiftTarget = 0;
                         }
                         else
                         {
-                            ShiftTarget = db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime >= ShiftStratTime && m.EndTime <= ShiftEndTime).Sum(m => m.TargetQuantity);
+                            ShiftTarget= db.tblpartscountandcuttings.Where(m => m.MachineID == Row.MachineID && m.StartTime >= ShiftStratTime && m.EndTime <= ShiftEndTime).Sum(m => m.TargetQuantity);
                         }
                         int PartPerCycle = Row.PartsPerCycle;
                         MainDetails MainDet = new MainDetails();
@@ -98,7 +98,7 @@ namespace SRKSDemo.Controllers
                 {
                     string CorrectedDate = DateTime.Now.ToString("yyyy-MM-dd");
                     CorrectedDate = "2019-06-24";
-                    MainDetails MainDet = new MainDetails();
+                    MainDetails MainDet = new MainDetails();                    
                     MainDet.MachineName = db.tblmachinedetails.Where(m => m.MachineID == Machineid).Select(m => m.MachineDisplayName).FirstOrDefault();
                     MainDet.MachineStatusColor = db.tbllivemodes.Where(m => m.MachineID == Machineid && m.IsCompleted == 0).OrderByDescending(m => m.ModeID).Select(m => m.ColorCode).FirstOrDefault();
                     MainDet.PartsCountActual = 0;
@@ -258,7 +258,7 @@ namespace SRKSDemo.Controllers
             foreach (var Row in OpMachineDet)
             {
                 int MachineID = Convert.ToInt32(Row.machineId);
-                var WorkOrderEntryDet = db.tblworkorderentries.Where(m => m.OperatorID == Operatorid && m.IsStarted == 1 && m.IsFinished == 0 && m.CorrectedDate == Corr && m.MachineID == MachineID).ToList();
+                var WorkOrderEntryDet= db.tblworkorderentries.Where(m => m.OperatorID == Operatorid && m.IsStarted == 1 && m.IsFinished == 0 && m.CorrectedDate == Corr && m.MachineID == MachineID).ToList();
                 if (WorkOrderEntryDet != null)
                 {
                     int PartPerCycle = Convert.ToInt32(Session["PartPerCycle"]);
@@ -323,7 +323,7 @@ namespace SRKSDemo.Controllers
             return Result;
         }
 
-        public string InsertData(int machineID, int Shift, string PartNo, string OPNO, string WONo, int WOQValue, string OperatorID, int PartPerCycle)
+        public string InsertData(int machineID, int Shift, string PartNo, string OPNO, string WONo, int WOQValue, string OperatorID,int PartPerCycle)
         {
             string result = "Fail";
             if (machineID != 0 && PartNo != null)
@@ -430,15 +430,15 @@ namespace SRKSDemo.Controllers
             string Result = "";
             string Operatorid = Convert.ToString(Session["OperatorID"]);
             var BreakDownTickectDet = db.tblBreakDownTickects.Where(m => m.isDeleted == 0 && m.machineId == Machineid && m.operatorId == Operatorid && m.reasonId != null).OrderByDescending(m => m.id).FirstOrDefault();
-
+            
             if (BreakDownTickectDet != null)
             {
-                if (BreakDownTickectDet.MaintFinished == 1 && BreakDownTickectDet.ProdFinished == 1)
+                if (BreakDownTickectDet.MaintFinished== 1 && BreakDownTickectDet.ProdFinished == 1)
                 {
                     var BreakdownDet = db.tblBreakdowncodes.Where(m => m.IsDeleted == 0 && m.BreakdownLevel == 1).ToList();
                     Result = JsonConvert.SerializeObject(BreakdownDet);
                 }
-                else if (BreakDownTickectDet.mntStatus == true)
+               else if (BreakDownTickectDet.mntStatus == true)
                 {
 
                     string UserName = Convert.ToString(Session["maintUser"]);
@@ -464,9 +464,9 @@ namespace SRKSDemo.Controllers
                     else if (BreakDownTickectDet.prodStatus == true)
                     {
 
-                        UserName = Convert.ToString(Session["maintUser"]);
-                        Password = Convert.ToString(Session["maintpwd"]);
-                        OperatorLoginDet = db.tblOperatorLoginDetails.Where(m => m.isDeleted == 0 && m.operatorUserName == UserName && m.operatorPwd == Password && m.roleId == 6).FirstOrDefault();
+                         UserName = Convert.ToString(Session["maintUser"]);
+                         Password = Convert.ToString(Session["maintpwd"]);
+                         OperatorLoginDet = db.tblOperatorLoginDetails.Where(m => m.isDeleted == 0 && m.operatorUserName == UserName && m.operatorPwd == Password && m.roleId == 6).FirstOrDefault();
                         if (OperatorLoginDet != null)
                         {
                             Result = "ProdAccept";
@@ -845,7 +845,7 @@ namespace SRKSDemo.Controllers
                     int lossCodeID = LossSelect;
                     ViewBag.lossCodeID = lossCodeID;
                     ViewBag.level = 3;
-                }
+                }                
 
                 #region Lock the Machine
                 var MacDet = db.tblmachinedetails.Find(MachineID);
@@ -864,7 +864,7 @@ namespace SRKSDemo.Controllers
         public ActionResult SaveIdle(int LossSelect = 0, int machineid = 0, bool flage = false, int count = 0)
         {
             //request came from level 2 and was a last node .Level 3  code will come as parameter.
-
+            
             #region Update TblMode
 
             GetMode GM = new GetMode();
@@ -897,7 +897,7 @@ namespace SRKSDemo.Controllers
                     DateTime ModeStartTime = DateTime.Now;
                     if (mode != null)
                     {
-                        if (item.LossFlag == 1)
+                        if(item.LossFlag == 1)
                         {
                             ModeStartTime = (DateTime)mode.StartTime;
                             durationinsec = Convert.ToInt32(DateTime.Now.Subtract(ModeStartTime).TotalSeconds);

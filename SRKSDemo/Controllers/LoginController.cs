@@ -285,35 +285,64 @@ namespace SRKSDemo.Controllers
                     var usercnt = condb.tblusers.Where(m => m.UserName == userlogin.UserName && m.Password == userlogin.Password && m.IsDeleted == 0).Count();
                     if (usercnt == 0) //There is no row with corresponding username and password.
                     {
-                        TempData["username"] = "Please enter a valid User Name & Password";
-                        return View(userlogin);
+                        //TempData["username"] = "Please enter a valid User Name & Password";
+                        //return View(userlogin);
+
+                        var OploginCount = condb.tblOperatorLoginDetails.Where(m => m.operatorUserName == userlogin.UserName && m.operatorPwd == userlogin.Password && m.isDeleted == 0).Count();
+                        if (OploginCount != 0)
+                        {
+                            var OperatorDet = condb.tblOperatorLoginDetails.Where(m => m.operatorUserName == userlogin.UserName && m.operatorPwd == userlogin.Password && m.isDeleted == 0).Select(m => new { m.operatorLoginId, m.operatorUserName, m.NumOfMachines, m.roleId,m.operatorId,m.operatorName }).FirstOrDefault();
+                            Session["OUserID"] = OperatorDet.operatorLoginId;
+                            Session["OUsername"] = OperatorDet.operatorName;
+                            Session["ORoleID"] = OperatorDet.roleId;
+                            Session["OFullName"] = OperatorDet.operatorUserName;
+                            Session["OMachineNo"] = OperatorDet.NumOfMachines;
+                            Session["LoginTime"] = DateTime.Now;
+                            Session["OperatorID"] = OperatorDet.operatorId;
+                            int OperatorId = Convert.ToInt32(Session["UserID"]);
+
+                            ViewBag.date = System.DateTime.Now;
+                            ViewBag.Logout = Session["OUsername"].ToString().ToUpper();
+                            ViewBag.roleid = OperatorDet.roleId;
+                            if (OperatorDet.roleId == 6)
+                            {
+                                Response.Redirect("~/OperatorEntryModel/Index", false);
+                            }
+                            else
+                            {
+                                TempData["username"] = "No Login Found.";
+                            }
+                        }
                     }
                     else if (usercnt != 0) // username and password matches so get user details and redirect to respective Views.
                     {
                         var log = condb.tblusers.Where(m => m.UserName == userlogin.UserName && m.Password == userlogin.Password && m.IsDeleted == 0).Select(m => new { m.UserID, m.PrimaryRole, m.UserName, m.MachineID }).Single();
-                        Session["UserID"] = log.UserID;
-                        Session["Username"] = log.UserName;
-                        Session["RoleID"] = log.PrimaryRole;
-                        Session["FullName"] = log.UserName;
-                        Session["MachineID"] = log.MachineID;
-                        int OperatorId = Convert.ToInt32(Session["UserID"]);
-
-                        ViewBag.date = System.DateTime.Now;
-                        ViewBag.Logout = Session["Username"].ToString().ToUpper();
-                        ViewBag.roleid = log.PrimaryRole;
-                        if (log.PrimaryRole == 1 || log.PrimaryRole == 2)
+                        if (log != null)
                         {
-                            Response.Redirect("~/Dashboard/Dashboard", false);
-                        }
-                        else if (log.PrimaryRole == 3 || log.PrimaryRole == 6)
-                        {
+                            Session["UserID"] = log.UserID;
+                            Session["Username"] = log.UserName;
+                            Session["RoleID"] = log.PrimaryRole;
+                            Session["FullName"] = log.UserName;
+                            Session["MachineID"] = log.MachineID;
+                            int OperatorId = Convert.ToInt32(Session["UserID"]);
 
-                            //Response.Redirect("~/OperatorEntry/DashboardProduction", false);
+                            ViewBag.date = System.DateTime.Now;
+                            ViewBag.Logout = Session["Username"].ToString().ToUpper();
+                            ViewBag.roleid = log.PrimaryRole;
+                            if (log.PrimaryRole == 1 || log.PrimaryRole == 2)
+                            {
+                                Response.Redirect("~/Dashboard/Dashboard", false);
+                            }
+                            else if (log.PrimaryRole == 3 || log.PrimaryRole == 6)
+                            {
 
-                            Response.Redirect("~/OperatorEntry/EntryWindow?id=" + log.MachineID + "", false);
+                                //Response.Redirect("~/OperatorEntry/DashboardProduction", false);
+
+                                Response.Redirect("~/OperatorEntry/EntryWindow?id=" + log.MachineID + "", false);
+                            }
                         }
                         TempData["username"] = "UserName or Password cannot be Empty.";
-                    }
+                    }                    
                 }
                 return View(userlogin);
             }
